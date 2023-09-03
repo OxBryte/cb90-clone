@@ -6,6 +6,7 @@ export default function Navbar() {
 
     // const location = useLocation();
     // const { pathname } = location;
+    
 
     return (
         <Box as='nav' bg='brand.100' w='full'>
