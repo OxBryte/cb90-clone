@@ -1,10 +1,11 @@
+import Accomplishment from "./components/accomplishment"
 import Layout from "./components/page-layout/layout"
 
 function App() {
 
   return (
     <Layout navbar={true} footer={true} >
-      hello
+      <Accomplishment/>
     </Layout>
   )
 }
