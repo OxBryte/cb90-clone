@@ -1,5 +1,6 @@
 import { Box, Divider, Flex, Image, ListItem, Stack, Text, UnorderedList, VStack } from '@chakra-ui/react'
 import ContainLayout from '../page-layout/container'
+import { FiFacebook, FiLinkedin, FiTwitter, FiYoutube } from 'react-icons/fi'
 
 export default function Footer() {
   return (
@@ -51,8 +52,19 @@ export default function Footer() {
                 <Text fontSize='14px'>Live Chat</Text>
                 <Text fontSize='14px'>Messenger</Text>
               </VStack>
-              <Flex>
-
+              <Flex gap='16px'>
+                <Box bg='white' color='brand.100' p='12px' border='1px' h='fit-content' rounded='full'>
+                  <FiYoutube size={20} />
+                </Box>
+                <Box bg='white' color='brand.100' p='12px' border='1px' h='fit-content' rounded='full'>
+                  <FiFacebook size={20} />
+                </Box>
+                <Box bg='white' color='brand.100' p='12px' border='1px' h='fit-content' rounded='full'>
+                  <FiTwitter size={20} />
+                </Box>
+                <Box bg='white' color='brand.100' p='12px' border='1px' h='fit-content' rounded='full'>
+                  <FiLinkedin size={20} />
+                </Box>
               </Flex>
             </Stack>
           </VStack>
