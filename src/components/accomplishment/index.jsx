@@ -1,4 +1,4 @@
-import { Box, Center, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import ContainLayout from '../page-layout/container'
 
 export default function Accomplishment() {
