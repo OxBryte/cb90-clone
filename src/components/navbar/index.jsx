@@ -6,7 +6,7 @@ export default function Navbar() {
     // const pathname = useLocation()
 
     return (
-        <Box as='nav' bg='brand.100' w='full' position='fixed' top='0'>
+        <Box as='nav' bg='brand.100' w='full'>
             <Box w='full' bg='brand.200' h='24px' />
             <ContainLayout>
                 <Flex align='center' justify='space-between' py='16px' >
