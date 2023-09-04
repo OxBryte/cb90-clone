@@ -6,7 +6,7 @@ export default function TrustedBy() {
         <Box w='full' py='100px'>
             <ContainLayout>
                 <Stack direction={['column', 'row']} justify='space-between' w='full'>
-                    <Heading>We are trusted by</Heading>
+                    <Heading textAlign='center'>We are trusted by</Heading>
                     <h2>Images</h2>
                 </Stack>
             </ContainLayout>

@@ -6,10 +6,10 @@ export default function Premier() {
         <Box w='full' py='100px'>
             <ContainLayout>
                 <VStack gap='50px'>
-                <Heading maxW='780px' textAlign='center'>CB90-Pro: Your Premier Crypto Auto-Trading Solution for Profitable Results</Heading>
+                    <Heading maxW='780px' textAlign='center' fontSize={['20px', '30px']}>CB90-Pro: Your Premier Crypto Auto-Trading Solution for Profitable Results</Heading>
                     <Box maxW='880px'>
-                    <Image src='./admin_img.png' alt='' />
-                </Box>
+                        <Image src='./admin_img.png' alt='' />
+                    </Box>
                 </VStack>
             </ContainLayout>
         </Box>

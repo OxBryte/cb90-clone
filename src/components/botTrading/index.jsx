@@ -6,18 +6,16 @@ export default function BotTrading() {
         <Box w='full' py='60px'>
             <ContainLayout>
                 <VStack w='full' gap='60px'>
-                    <Box>
-                        <Heading teaxAlign='center'>Empower Your Portfolio with Our Diverse Bot Trio</Heading>
-                    </Box>
+                    <Heading textAlign='center' fontSize={['24px', '30px']}>Empower Your Portfolio with Our Diverse Bot Trio</Heading>
                     <Tabs variant='unstyled' w='full' align='center'>
                         <TabList>
-                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }}>Day Trading Bot</Tab>
-                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }}>Swing Trading Bot</Tab>
-                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }}>Long-Term Hold Bot</Tab>
+                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }} fontSize={['12px', '16.6px']}>Day Trading Bot</Tab>
+                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }} fontSize={['12px', '16.6px']}>Swing Trading Bot</Tab>
+                            <Tab _selected={{ color: 'white', bgGradient: 'linear(to-b, brand.200, brand.400)' }} fontSize={['12px', '16.6px']}>Long-Term Hold Bot</Tab>
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p='50px'>
+                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p={['20px', '50px']}>
                                     <VStack align='left' textAlign='left' gap='40px'>
                                         <VStack align='left' gap='20px'>
                                             <Heading>Day Trading Bot</Heading>
@@ -39,14 +37,14 @@ export default function BotTrading() {
                                         </HStack>
                                         <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Get Started</Button>
                                     </VStack>
-                                    <Box>
-                                        <Image src='./dayTrading.png' alt='' maxW='420px' />
+                                    <Box maxW='420px'>
+                                        <Image src='./dayTrading.png' alt='' />
                                     </Box>
                                 </Stack>
                             </TabPanel>
 
                             <TabPanel>
-                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p='50px'>
+                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p={['20px', '50px']}>
                                     <VStack align='left' textAlign='left' gap='40px'>
                                         <VStack align='left' gap='20px'>
                                             <Heading>Swing Trading Bot</Heading>
@@ -68,14 +66,14 @@ export default function BotTrading() {
                                         </HStack>
                                         <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Get Started</Button>
                                     </VStack>
-                                    <Box>
-                                        <Image src='./swingTrading.png' alt='' maxW='460px' />
+                                    <Box maxW='460px'>
+                                        <Image src='./swingTrading.png' alt='' />
                                     </Box>
                                 </Stack>
                             </TabPanel>
 
                             <TabPanel>
-                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p='50px'>
+                                <Stack direction={['column', 'row']} gap='30px' w='full' align='center' justify='space-between' p={['20px', '50px']}>
                                     <VStack align='left' textAlign='left' gap='40px'>
                                         <VStack align='left' gap='20px'>
                                             <Heading>Long-Term Hold Bot</Heading>
@@ -97,8 +95,8 @@ export default function BotTrading() {
                                         </HStack>
                                         <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Get Started</Button>
                                     </VStack>
-                                    <Box>
-                                        <Image src='./longTrading.png' alt='' maxW='453px' />
+                                    <Box maxW='453px'>
+                                        <Image src='./longTrading.png' alt='' />
                                     </Box>
                                 </Stack>
                             </TabPanel>

@@ -7,8 +7,10 @@ export default function Testimonial() {
         <Box w='full' py='130px' bg='brand.500'>
             <ContainLayout>
                 <VStack gap='50px' w='full' color='white'>
-                    <Heading>User Triumphs: CB90-Pro Testimonials</Heading>
+                    <Heading textAlign='center' fontSize={['20px', '30px']}>User Triumphs: CB90-Pro Testimonials</Heading>
+                    <Box px='20px' w='full'>
                     <TestimonialCard />
+                    </Box>
                 </VStack>
             </ContainLayout>
         </Box>

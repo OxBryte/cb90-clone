@@ -34,7 +34,7 @@ export default class TestimonialCard extends Component {
                     }
                 },
                 {
-                    breakpoint: 480,
+                    breakpoint: 460,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
