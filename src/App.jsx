@@ -1,4 +1,5 @@
 import Accomplishment from "./components/accomplishment"
+import BotTrading from "./components/botTrading"
 import Hero from "./components/hero"
 import Layout from "./components/page-layout/layout"
 import Premier from "./components/premier"
@@ -14,6 +15,7 @@ function App() {
       <Accomplishment />
       <TrustedBy />
       <StandOut />
+      <BotTrading />
     </Layout>
   )
 }
