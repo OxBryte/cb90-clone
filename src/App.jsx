@@ -3,6 +3,7 @@ import BotTrading from "./components/botTrading"
 import Hero from "./components/hero"
 import Layout from "./components/page-layout/layout"
 import Premier from "./components/premier"
+import PricingPlan from "./components/pricingPlan"
 import StandOut from "./components/standout"
 import TrustedBy from "./components/trustedBy"
 
@@ -16,6 +17,7 @@ function App() {
       <TrustedBy />
       <StandOut />
       <BotTrading />
+      <PricingPlan />
     </Layout>
   )
 }
