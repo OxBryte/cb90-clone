@@ -1,4 +1,4 @@
-import { Box, Button, Flex, HStack, Heading, Image, ListItem, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text, UnorderedList, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, ListItem, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text, UnorderedList, VStack } from "@chakra-ui/react";
 import ContainLayout from '../page-layout/container'
 
 export default function PricingPlan() {
@@ -35,7 +35,7 @@ export default function PricingPlan() {
                                             <ListItem>All exchange integrations</ListItem>
                                         </UnorderedList>
                                     </VStack>
-                                    
+
                                     <VStack gap='24px' bg='white' rounded='16px' p='40px' maxW='356px' h='646px'>
                                         <Heading>Standard</Heading>
                                         <Text color='brand.600'>Take your trading to another level with advanced features</Text>
@@ -55,7 +55,7 @@ export default function PricingPlan() {
                                             <ListItem>Manual trading</ListItem>
                                         </UnorderedList>
                                     </VStack>
-                                    
+
                                     <VStack gap='24px' bg='white' rounded='16px' p='40px' maxW='356px' h='646px'>
                                         <Heading>Pro</Heading>
                                         <Text color='brand.600'>Expert precision and features to
