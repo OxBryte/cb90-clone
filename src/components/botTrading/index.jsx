@@ -7,7 +7,7 @@ export default function BotTrading() {
             <ContainLayout>
                 <VStack w='full' gap='60px'>
                     <Box>
-                        <Heading>Empower Your Portfolio with Our Diverse Bot Trio</Heading>
+                        <Heading teaxAlign='center'>Empower Your Portfolio with Our Diverse Bot Trio</Heading>
                     </Box>
                     <Tabs variant='unstyled' w='full' align='center'>
                         <TabList>

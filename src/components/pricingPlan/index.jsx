@@ -16,7 +16,7 @@ export default function PricingPlan() {
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                                <Stack direction={['column', 'row']} gap='20px' w='full' align='center' justify='space-between' py='30px'>
+                                <Stack direction={['column', 'column', 'row']} gap='20px' w='full' align='center' justify='space-between' py='30px'>
                                     <VStack gap='24px' bg='white' rounded='16px' p='40px' maxW='356px' h='646px'>
                                         <Heading>Lite +</Heading>
                                         <Text color='brand.600'>Hassle-free automated trading, with trade bots from the Cloud</Text>
@@ -78,7 +78,7 @@ export default function PricingPlan() {
                             </TabPanel>
 
                             <TabPanel>
-                                <Stack direction={['column', 'row']} gap='20px' w='full' align='center' justify='space-between' py='30px'>
+                                <Stack direction={['column', 'column', 'row']} gap='20px' w='full' align='center' justify='space-between' py='30px'>
                                     <VStack gap='24px' bg='white' rounded='16px' p='40px' maxW='356px' h='646px'>
                                         <Heading>Lite +</Heading>
                                         <Text color='brand.600'>Hassle-free automated trading, with trade bots from the Cloud</Text>

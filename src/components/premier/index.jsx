@@ -7,8 +7,8 @@ export default function Premier() {
             <ContainLayout>
                 <VStack gap='50px'>
                 <Heading maxW='780px' textAlign='center'>CB90-Pro: Your Premier Crypto Auto-Trading Solution for Profitable Results</Heading>
-                <Box>
-                    <Image src='./admin_img.png' maxW='890px' alt='' />
+                    <Box maxW='880px'>
+                    <Image src='./admin_img.png' alt='' />
                 </Box>
                 </VStack>
             </ContainLayout>

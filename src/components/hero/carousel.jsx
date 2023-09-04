@@ -10,11 +10,11 @@ export default class Carousel extends Component {
             className: "center",
             centerMode: true,
             infinite: true,
-            centerPadding: "220px",
+            centerPadding: "100px",
             slidesToShow: 1,
             speed: 1000,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 4000,
         };
         return (
             <Box color='white'>

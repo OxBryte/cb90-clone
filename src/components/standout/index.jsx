@@ -6,7 +6,7 @@ export default function StandOut() {
         <Box bg='brand.300' w='full' py='100px'>
             <ContainLayout>
                 <VStack w='full' gap='40px'>
-                    <Heading>What makes  CB90-Pro Stand out?</Heading>
+                    <Heading textAlign='center'>What makes  CB90-Pro Stand out?</Heading>
                     <Stack direction={['column', 'column', 'column', 'row']} gap='30px' justify='space-between' align='center' w='full'>
                         <Box>
                             <Image src='./bitcoinbro.png' maxW='420px' alt='' />
