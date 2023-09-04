@@ -6,6 +6,7 @@ import Layout from "./components/page-layout/layout"
 import Premier from "./components/premier"
 import PricingPlan from "./components/pricingPlan"
 import StandOut from "./components/standout"
+import Testimonial from "./components/testimonial"
 import TrustedBy from "./components/trustedBy"
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <StandOut />
       <BotTrading />
       <PricingPlan />
+      <Testimonial />
       <FAQs />
     </Layout>
   )
