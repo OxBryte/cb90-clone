@@ -4,7 +4,7 @@ import { FiFacebook, FiLinkedin, FiTwitter, FiYoutube } from 'react-icons/fi'
 
 export default function Footer() {
   return (
-    <Box w='full' bg='brand.500' py='80px'>
+    <Box w='full' bg='brand.500' pt='80px' pb='30px'>
       <ContainLayout>
         <VStack w='full' align='left' gap='20px'>
           <Stack direction={['column', 'row']} color='brand.300' align='top' justify='space-between' w='full' gap='20px'>
