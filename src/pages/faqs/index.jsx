@@ -1,11 +1,11 @@
 import Layout from '../../components/page-layout/layout'
-import FAQs from '../../components/faqs'
+import FaqsPage from '../../components/faqs/faqsPage'
 
 function Faqs() {
 
     return (
         <Layout navbar={true} footer={true} >
-            <FAQs />
+            <FaqsPage />
         </Layout>
     )
 }
