@@ -35,9 +35,9 @@ export default function Navbar() {
                                         <Box fontSize='14px' as='a' href='/faqs'>Faqs</Box>
                                     </Box>
                                     <Box _hover={{ color: 'brand.200' }} cursor='pointer' color={pathname === '/login' && 'brand.200'}>
-                                        <Box fontSize='14px' as='a' href='/'>Login</Box>
+                                        <Box fontSize='14px' as='a' href='/login'>Login</Box>
                                     </Box>
-                                    <Button as='a' href='/' fontSize='14px' px='20px' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                                    <Button as='a' href='/signup' fontSize='14px' px='20px' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
                                         Register
                                     </Button>
                                 </HStack>
