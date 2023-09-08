@@ -1,28 +1,18 @@
-import Accomplishment from "./components/accomplishment"
-import BotTrading from "./components/botTrading"
-import FAQs from "./components/faqs"
-import Hero from "./components/hero"
-import Layout from "./components/page-layout/layout"
-import Premier from "./components/premier"
-import PricingPlan from "./components/pricingPlan"
-import StandOut from "./components/standout"
-import Testimonial from "./components/testimonial"
-import TrustedBy from "./components/trustedBy"
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import Home from "./pages/home"
+import Faqs from "./pages/faqs"
 
 function App() {
 
   return (
-    <Layout navbar={true} footer={true} >
-      <Hero />
-      <Premier />
-      <Accomplishment />
-      <TrustedBy />
-      <StandOut />
-      <BotTrading />
-      <PricingPlan />
-      <Testimonial />
-      <FAQs />
-    </Layout>
+    <>
+    <Router>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/faqs" element={<Faqs />} />
+      </Routes>
+    </Router>
+    </>
   )
 }
 
