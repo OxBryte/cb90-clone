@@ -9,12 +9,24 @@ export default function FaqsPage() {
                 <VStack w='full' gap='40px'>
                     <Heading>FAQs</Heading>
                     <Stack direction={['column', 'row']}>
-                        <FaqsSingle />
-                        <FaqsSingle />
+                        <VStack w='full' align='left' gap='30px'>
+                            <Heading fontSize={28}>Security Verification- SMS/Email/Google </Heading>
+                            <FaqsSingle />
+                        </VStack>
+                        <VStack w='full' align='left' gap='30px'>
+                            <Heading fontSize={28}>Account Functions </Heading>
+                            <FaqsSingle />
+                        </VStack>
                     </Stack>
                     <Stack direction={['column', 'row']}>
-                        <FaqsSingle />
-                        <FaqsSingle />
+                        <VStack w='full' align='left' gap='30px'>
+                            <Heading fontSize={28}>Deposits & withdrawals</Heading>
+                            <FaqsSingle />
+                        </VStack>
+                        <VStack w='full' align='left' gap='30px'>
+                            <Heading fontSize={28}>Bot Enquiries</Heading>
+                            <FaqsSingle />
+                        </VStack>
                     </Stack>
                 </VStack>
             </ContainLayout>
