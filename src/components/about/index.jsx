@@ -1,5 +1,6 @@
 import { Box, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import ContainLayout from '../page-layout/container'
+import Team from '../team'
 
 export default function AboutUs() {
     return (
@@ -39,6 +40,7 @@ export default function AboutUs() {
                     </VStack>
                 </ContainLayout>
             </Box>
+            <Team />
         </Box>
     )
 }
