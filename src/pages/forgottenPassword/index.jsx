@@ -1,8 +1,8 @@
 import { Box, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import ContainLayout from '../../components/page-layout/container'
-import { SignupComp } from '../../components/auth'
+import { ForgottenPasswordComp } from '../../components/auth'
 
-export default function Signup() {
+export default function ForgottenPassword() {
 
     return (
         <Box w='full'>
@@ -16,10 +16,10 @@ export default function Signup() {
                     </Box>
                     <VStack align='left' py='40px' gap='50px'>
                         <VStack align='left' gap='20px'>
-                            <Heading>Create an Account</Heading>
-                            <Text maxW='530px'>Welcome to CB90-Pro! Join the future of crypto trading by creating your account below</Text>
+                            <Heading>Password Recovery</Heading>
+                            <Text maxW='530px'>Enter your email to recover your password</Text>
                         </VStack>
-                        <SignupComp />
+                        <ForgottenPasswordComp />
                     </VStack>
                 </ContainLayout>
             </SimpleGrid>

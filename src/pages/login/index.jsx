@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Box, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import ContainLayout from '../../components/page-layout/container'
 import { LoginComp } from '../../components/auth'
 
@@ -11,7 +11,10 @@ export default function Login() {
 
                 </Box>
                 <ContainLayout>
-                    <VStack align='left' py='100px' gap='50px'>
+                    <Box mt='30px'>
+                        <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
+                    </Box>
+                    <VStack align='left' py='40px' gap='50px'>
                         <VStack align='left' gap='20px'>
                             <Heading>Login to CB90-Pro Dashboard</Heading>
                             <Text maxW='530px'>Your dashboard is just a few clicks away! Please provide the necessary information below to access it.</Text>

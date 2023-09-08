@@ -4,6 +4,7 @@ import Faqs from "./pages/faqs"
 import About from "./pages/about"
 import Login from "./pages/login"
 import Signup from "./pages/signup"
+import ForgottenPassword from "./pages/forgottenPassword"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/recover" element={<ForgottenPassword />} />
       </Routes>
     </Router>
     </>

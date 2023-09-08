@@ -39,7 +39,7 @@ export function LoginComp() {
                                 }
                             </InputGroup>
                         </Box>
-                        <Text bgClip='text' bgGradient='linear(to-b, brand.200, brand.400)' fontWeight={600}>Forget password?</Text>
+                        <Box as='a' href='/recover' cursor='pointer' bgClip='text' bgGradient='linear(to-b, brand.200, brand.400)' fontWeight={600}>Forget password?</Box>
                         <Button as='a' href='/' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
                             Login
                         </Button>
@@ -137,6 +137,27 @@ export function SignupComp() {
                     </VStack>
                 </FormControl>
             </VStack>
+        </>
+    )
+}
+
+
+
+export function ForgottenPasswordComp() {
+    return (
+        <>
+            <FormControl w='530px'>
+                <VStack gap='20px' align='left'>
+                    <Box>
+                        <Text mb='8px'>Email address</Text>
+                        <Input placeholder='Enter valid email address' type='email' size='md' />
+                    </Box>
+                    <Button as='a' href='/' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                        Send reset email
+                    </Button>
+                    <Text>Don&apos;t forget password? <Box as='a' href='/login' cursor='pointer' fontWeight='600' bgGradient='linear(to-b, brand.200, brand.400)' bgClip='text'>Login now</Box></Text>
+                </VStack>
+            </FormControl>
         </>
     )
 }
