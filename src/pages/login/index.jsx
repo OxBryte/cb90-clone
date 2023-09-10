@@ -14,7 +14,7 @@ export default function Login() {
                     <Carousel />
                 </VStack>
                 <ContainLayout>
-                    <Box mt='30px'>
+                    <Box mt='70px'>
                         <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
                     </Box>
                     <VStack align='left' py='40px' gap='50px'>
