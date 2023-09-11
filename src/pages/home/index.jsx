@@ -8,7 +8,6 @@ import BotTrading from '../../components/botTrading'
 import PricingPlan from '../../components/pricingPlan'
 import Testimonial from '../../components/testimonial'
 import FAQs from '../../components/faqs'
-import { Carousel } from '../../components/carousel'
 
 function Home() {
 
@@ -23,7 +22,6 @@ function Home() {
             <PricingPlan />
             <Testimonial />
             <FAQs />
-            <Carousel />
         </Layout>
     )
 }
