@@ -5,6 +5,7 @@ import About from "./pages/about"
 import Login from "./pages/login"
 import Signup from "./pages/signup"
 import ForgottenPassword from "./pages/forgottenPassword"
+import Dashboard from "./pages/dashboard"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/recover" element={<ForgottenPassword />} />
+          <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
     </>
