@@ -55,7 +55,7 @@ export const Carousel = () => {
                 {/* <Box w='50px' h='20px' bg='brand.300' onClick={() => { updateIndex(activeIndex + 1); }} /> */}
             </HStack>
 
-            <Box whiteSpace='nowrap' mt='40px' transition='transform 0.5s ease-in-out' style={{ transform: `translate(-${activeIndex * 100}%)` }}>
+            <Box whiteSpace='nowrap' mt='30px' transition='transform 0.5s ease-in-out' style={{ transform: `translate(-${activeIndex * 100}%)` }}>
                 {items.map((item) => {
                     return <CarouselItemHeader
                         item={item}
