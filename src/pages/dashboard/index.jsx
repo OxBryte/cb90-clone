@@ -69,20 +69,20 @@ export default function Dashboard() {
                             <Box>
                                 <Popover trigger="hover" placement='bottom-end'>
                                     <PopoverTrigger>
-                                        <Flex cursor='pointer' align='center' justify='space-between' w='130px' p='15px' bg='brand.300' rounded='12px' gap='12px'>
+                                        <Flex cursor='pointer' align='center' justify='space-between' w='130px' p='12px' bg='brand.900' rounded='12px' gap='12px'>
                                             This year
                                             <MdKeyboardArrowDown size={25} />
                                         </Flex>
                                     </PopoverTrigger>
                                     <PopoverContent w='130px' border='none' boxShadow='md'>
                                         <VStack bg='white' rounded='12px' w='full' gap='0'>
-                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
                                                 This month
                                             </Flex>
-                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
                                                 This week
                                             </Flex>
-                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
                                                 Today
                                             </Flex>
                                         </VStack>
@@ -94,17 +94,17 @@ export default function Dashboard() {
                             <Box>
                                 <Popover trigger="hover" placement='bottom-end'>
                                     <PopoverTrigger>
-                                        <Flex cursor='pointer' align='center' justify='space-between' w='210px' p='15px' bg='brand.300' rounded='12px' gap='12px'>
+                                        <Flex cursor='pointer' align='center' justify='space-between' w='210px' p='12px' bg='brand.900' rounded='12px' gap='12px'>
                                             Day Trading Bot
                                             <MdKeyboardArrowDown size={25} />
                                         </Flex>
                                     </PopoverTrigger>
                                     <PopoverContent w='210px' border='none' boxShadow='md'>
                                         <VStack bg='white' rounded='12px' w='full' gap='0'>
-                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
                                                 Swing Trading Bot
                                             </Flex>
-                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                                            <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
                                                 Long-Term Trading Bot
                                             </Flex>
                                         </VStack>
