@@ -79,7 +79,7 @@ export default function Sidebar() {
                 {SidebarData2.map((item, index) => {
                     return (
                         <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'white', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'white' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
-                            <HStack>
+                            <HStack color={item.title === 'Logout' && 'red.400'}>
                                 {item.icon}
                                 <Box>{item.title}</Box>
                             </HStack>
