@@ -20,6 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/recover" element={<ForgottenPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/tradingbot" element={<Dashboard />} />
       </Routes>
     </Router>
     </>

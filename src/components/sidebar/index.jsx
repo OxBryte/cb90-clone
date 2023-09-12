@@ -16,7 +16,7 @@ const SidebarData = [
     {
         title: 'Trading Bots',
         icon: <FiCpu />,
-        link: '/'
+        link: '/tradingbot'
     },
     {
         title: 'Alerts',
@@ -65,7 +65,7 @@ export default function Sidebar() {
                 <UnorderedList m='0' listStyleType='none' spacing='10px'>
                     {SidebarData.map((item, index) => {
                         return (
-                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'white', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'white' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
+                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'brand.900' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
                                 <HStack>
                                     {item.icon}
                                     <Box>{item.title}</Box>
@@ -78,7 +78,7 @@ export default function Sidebar() {
             <UnorderedList m='0' listStyleType='none' spacing='10px' justifyContent='end'>
                 {SidebarData2.map((item, index) => {
                     return (
-                        <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'white', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'white' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
+                        <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'brand.900' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
                             <HStack color={item.title === 'Logout' && 'red.400'}>
                                 {item.icon}
                                 <Box>{item.title}</Box>
