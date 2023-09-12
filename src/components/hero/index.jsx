@@ -13,7 +13,7 @@ export default function Hero() {
                     <VStack color='white' gap='20px'>
                         <Heading textAlign='center' fontSize={['28px', '46px']}>Unlock Your Crypto Potential with CB90-Pro</Heading>
                         <Text textAlign='center'>Experience Advanced Crypto Trading Strategies, Simplified.</Text>
-                        <Button variant='solid' bgGradient='linear(to-b, brand.200, brand.400)' px='32px' color={'white'} _hover={{ bg: 'brand.200' }}>Get Started</Button>
+                        <Button as='a' href='/signup' variant='solid' bgGradient='linear(to-b, brand.200, brand.400)' px='32px' color={'white'} _hover={{ bg: 'brand.200' }}>Get Started</Button>
                     </VStack>
                     <Box w='full' mt='50px'>
                         {
