@@ -1,11 +1,9 @@
-// import DashboardLayout from '../../components/page-layout/dashboardLayout'
-import Sidebar from '../../components/sidebar'
+import DashboardLayout from '../../components/page-layout/dashboardLayout'
 
 export default function Dashboard() {
     return (
-        <>
-            {/* <DashboardLayout /> */}
-            <Sidebar />
-        </>
+        <DashboardLayout sidebar={true} dashboardNav={true}>
+            Testing
+        </DashboardLayout>
     )
 }

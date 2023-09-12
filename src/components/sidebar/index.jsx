@@ -55,7 +55,7 @@ const SidebarData2 = [
 
 export default function Sidebar() {
     return (
-        <VStack maxW='260px' justify='space-between' align='left' bg='brand.500' color='white' fontWeight='600' pl='40px' py='50px' h='100vh'>
+        <VStack justify='space-between' align='left' bg='brand.500' color='white' fontWeight='600' pl='50px' py='50px' h='100vh'>
             <VStack gap='50px' w='full' align='left'>
                 <Box>
                     <Link to='/'>
