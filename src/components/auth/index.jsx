@@ -40,7 +40,7 @@ export function LoginComp() {
                             </InputGroup>
                         </Box>
                         <Box as='a' href='/recover' cursor='pointer' bgClip='text' bgGradient='linear(to-b, brand.200, brand.400)' fontWeight={600}>Forget password?</Box>
-                        <Button as='a' href='/' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                        <Button as='a' href='/dashboard' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
                             Login
                         </Button>
                         <Text>Don&apos;t have an account? <Box as='a' href='/signup' cursor='pointer' fontWeight='600' bgGradient='linear(to-b, brand.200, brand.400)' bgClip='text'>Register now</Box></Text>
@@ -130,7 +130,7 @@ export function SignupComp() {
                                 </Text>
                             </Checkbox>
                         </VStack>
-                        <Button as='a' href='/' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                        <Button as='a' href='/dashboard' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
                             Register
                         </Button>
                         <Text>Already have an account? <Box as='a' href='/login' cursor='pointer' fontWeight='600' bgGradient='linear(to-b, brand.200, brand.400)' bgClip='text'>Login now</Box></Text>
