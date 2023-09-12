@@ -10,7 +10,7 @@ const DashboardLayout = ({ children, sidebar = true, dashboardNav = true }) => {
             </GridItem>
             <GridItem colSpan={4} bg='brand.900'>
                 {dashboardNav && <DashboardNavbar />}
-                <Box m='20px'>
+                <Box m='30px'>
                     {children}
                 </Box>
             </GridItem>
