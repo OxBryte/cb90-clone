@@ -23,7 +23,7 @@ const SidebarData = [
     {
         title: 'Alerts',
         icon: <PiNotification />,
-        link: '/alert',
+        link: '/alerts',
         id: 'alerts'
     },
     {
