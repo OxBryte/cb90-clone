@@ -5,38 +5,44 @@ import { RiExchangeFundsFill } from 'react-icons/ri'
 import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 
 const SidebarData = [
     {
         title: 'Overview',
         icon: <RxDashboard />,
-        link: '/dashboard'
+        link: '/dashboard',
+        id: 'dashboard'
     },
     {
         title: 'Trading Bots',
         icon: <FiCpu />,
-        link: '/tradingbot'
+        link: '/tradingbot',
+        id: 'tradingbot'
     },
     {
         title: 'Alerts',
         icon: <PiNotification />,
-        link: '/'
+        link: '/alert',
+        id: 'alerts'
     },
     {
         title: 'Market trends ',
         icon: <PiTrendUpFill />,
-        link: '/'
+        link: '/market-trend',
+        id: 'market-trend'
     },
     {
         title: 'Exchanges',
         icon: <RiExchangeFundsFill />,
-        link: '/'
+        link: '/exchange',
+        id: 'exchange'
     },
     {
         title: 'Settings',
         icon: <FiSettings />,
-        link: '/'
+        link: '/setting',
+        id: 'settings'
     },
 ]
 
@@ -44,16 +50,21 @@ const SidebarData2 = [
     {
         title: 'Support',
         icon: <IoHeadsetOutline />,
-        link: '/'
+        link: '/support',
+        id: 'support'
     },
     {
         title: 'Logout',
         icon: <TbLogout2 />,
-        link: '/'
+        link: '/logout',
+        id: 'logout'
     },
 ]
 
 export default function Sidebar() {
+
+    const { id } = useParams()
+
     return (
         <VStack justify='space-between' align='left' bg='brand.500' color='white' fontWeight='600' pl='70px' py='50px' h='100vh' position='sticky' top='0'>
             <VStack gap='50px' w='full' align='left'>
@@ -63,27 +74,31 @@ export default function Sidebar() {
                     </Link>
                 </Box>
                 <UnorderedList m='0' listStyleType='none' spacing='10px'>
-                    {SidebarData.map((item, index) => {
+                    {SidebarData.map((item, i) => {
                         return (
-                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'brand.900' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
-                                <HStack>
-                                    {item.icon}
-                                    <Box>{item.title}</Box>
-                                </HStack>
-                            </ListItem>
+                            <NavLink to={item.link} key={i}>
+                                <ListItem my='10px' p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
+                                    <HStack>
+                                        {item.icon}
+                                        <Box>{item.title}</Box>
+                                    </HStack>
+                                </ListItem>
+                            </NavLink>
                         )
                     })}
                 </UnorderedList>
             </VStack>
             <UnorderedList m='0' listStyleType='none' spacing='10px' justifyContent='end'>
-                {SidebarData2.map((item, index) => {
+                {SidebarData2.map((item, i) => {
                     return (
-                        <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={window.location.pathname === item.link ? 'brand.900' : ''} key={index} color={window.location.pathname === item.link ? 'brand.100' : ''} onClick={() => { window.location.pathname = item.link }}>
-                            <HStack color={item.title === 'Logout' && 'red.400'}>
-                                {item.icon}
-                                <Box>{item.title}</Box>
-                            </HStack>
-                        </ListItem>
+                        <NavLink to={item.link} key={i}>
+                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
+                                <HStack color={item.title === 'Logout' && 'red.400'}>
+                                    {item.icon}
+                                    <Box>{item.title}</Box>
+                                </HStack>
+                            </ListItem>
+                        </NavLink>
                     )
                 })}
             </UnorderedList>

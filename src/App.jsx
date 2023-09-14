@@ -6,7 +6,7 @@ import Login from "./pages/login"
 import Signup from "./pages/signup"
 import ForgottenPassword from "./pages/forgottenPassword"
 import Dashboard from "./pages/dashboard"
-import TradingBot from "./pages/tradingbot"
+// import TradingBot from "./pages/tradingbot"
 
 function App() {
 
@@ -20,8 +20,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/recover" element={<ForgottenPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/tradingbot" element={<TradingBot />} />
+          <Route path="/:id" element={<Dashboard />} />
+          {/* <Route path="/tradingbot" element={<TradingBot />} /> */}
       </Routes>
     </Router>
     </>
