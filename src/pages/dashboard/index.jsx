@@ -4,6 +4,7 @@ import Overview from './overview'
 import { Text } from '@chakra-ui/react';
 import TradingBot from './tradingBot';
 import Alerts from './alerts';
+import Exchange from './exchange';
 
 export default function Dashboard() {
     const { id } = useParams();
@@ -17,6 +18,8 @@ export default function Dashboard() {
                     <TradingBot />
                 ) : id === 'alerts' ? (
                     <Alerts />
+                ) : id === 'exchange' ? (
+                    <Exchange />
                 ) : (
                     <Text w='full' display='flex' justifyContent='center'>Be Patient... 👷‍♂️</Text>
                 )
