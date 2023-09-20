@@ -41,7 +41,7 @@ const SidebarData = [
     {
         title: 'Settings',
         icon: <FiSettings />,
-        link: '/setting',
+        link: '/settings',
         id: 'settings'
     },
 ]
