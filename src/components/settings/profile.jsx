@@ -1,5 +1,4 @@
 import { Grid, GridItem, Heading, Input, Flex, Text, VStack, Box, Divider, Stack, HStack, Button } from '@chakra-ui/react'
-import React from 'react'
 
 export default function Profile() {
     return (
