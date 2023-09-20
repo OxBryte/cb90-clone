@@ -10,7 +10,7 @@ export default function DashboardNavbar() {
 
   return (
     <HStack bg='white' justify='space-between' align='center' px='30px' py='16px' w='full' boxShadow='sm' m='0'>
-      <Text fontSize='20px' fontWeight='700' color='brand.100'>{pathname === '/dashboard' && 'Overview' || pathname === '/tradingbot' && 'Trading Bot' || pathname === '/alerts' && 'Alerts & Reports' || pathname === '/exchange' && 'Exchanges' || pathname === '/settings' && 'Settings'}</Text>
+      <Text fontSize='20px' fontWeight='700' color='brand.100'>{pathname === '/dashboard' && 'Overview' || pathname === '/tradingbot' && 'Trading Bot' || pathname === '/alerts' && 'Alerts & Reports' || pathname === '/exchange' && 'Exchanges' || pathname === '/settings' && 'Settings' || pathname === '/support' && 'Help and Support'}</Text>
       <Flex align='center' gap='16px'>
         <FiBell size={22} />
         <Popover trigger='hover' placement='bottom-end' >
