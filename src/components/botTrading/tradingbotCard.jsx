@@ -31,14 +31,14 @@ export default function TradingbotCard({ botTitle }) {
             </HStack>
             <Stack direction={['column', 'row']} justify='space-between' w='full' p='30px' align='center'>
                 <VStack align='left' gap='20px'>
-                    <HStack align='center' gap='20px'>
+                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
                         <Image src='./closed.svg' alt='' />
                         <VStack align='left'>
                             <Text>Closed Trades</Text>
                             <Text fontWeight={700}>5</Text>
                         </VStack>
                     </HStack>
-                    <HStack align='center' gap='20px'>
+                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
                         <Image src='./open.svg' alt='' />
                         <VStack align='left'>
                             <Text>Open Trades</Text>
@@ -47,14 +47,14 @@ export default function TradingbotCard({ botTitle }) {
                     </HStack>
                 </VStack>
                 <VStack align='left' gap='20px'>
-                    <HStack align='center' gap='20px'>
+                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
                         <Image src='./chartup.svg' alt='' />
                         <VStack align='left'>
                             <Text>Profits</Text>
                             <Text fontWeight={700}>$10,234.00</Text>
                         </VStack>
                     </HStack>
-                    <HStack align='center' gap='20px'>
+                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
                         <Image src='./chartdown.svg' alt='' />
                         <VStack align='left'>
                             <Text>Loss</Text>
