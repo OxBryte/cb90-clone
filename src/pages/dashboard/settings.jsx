@@ -8,12 +8,12 @@ export default function Settings() {
         <>
             <VStack w='full' gap='50px'>
                 <Box bg='white' w='full' p='30px' rounded='16px'>
-                    <Tabs variant='soft-rounded' colorScheme='green'>
+                    <Tabs variant='soft-rounded'>
                         <TabList>
-                            <Tab>Profile</Tab>
-                            <Tab>Security</Tab>
-                            <Tab>Subscription</Tab>
-                            <Tab>Notification</Tab>
+                            <Tab _selected={{ bg: '#E6F8F8' }}>Profile</Tab>
+                            <Tab _selected={{ bg: '#E6F8F8' }}>Security</Tab>
+                            <Tab _selected={{ bg: '#E6F8F8' }}>Subscription</Tab>
+                            <Tab _selected={{ bg: '#E6F8F8' }}>Notification</Tab>
                         </TabList>
                         <Divider my='20px' />
                         <TabPanels>
