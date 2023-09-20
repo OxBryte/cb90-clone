@@ -1,5 +1,6 @@
 import { Box, Divider, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@chakra-ui/react'
 import Profile from '../../components/settings/profile'
+import Security from '../../components/settings/security'
 
 export default function Settings() {
     return (
@@ -19,7 +20,7 @@ export default function Settings() {
                                 <Profile />
                             </TabPanel>
                             <TabPanel>
-                                <p>two!</p>
+                                <Security />
                             </TabPanel>
                             <TabPanel>
                                 <p>three!</p>
