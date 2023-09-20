@@ -1,6 +1,7 @@
 import { Box, Divider, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@chakra-ui/react'
 import Profile from '../../components/settings/profile'
 import Security from '../../components/settings/security'
+import Notification from '../../components/settings/notification'
 
 export default function Settings() {
     return (
@@ -26,7 +27,7 @@ export default function Settings() {
                                 <p>three!</p>
                             </TabPanel>
                             <TabPanel>
-                                <p>four!</p>
+                                <Notification />
                             </TabPanel>
                         </TabPanels>
                     </Tabs>
