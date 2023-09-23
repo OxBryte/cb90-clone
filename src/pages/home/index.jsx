@@ -15,12 +15,12 @@ function Home() {
         <Layout navbar={true} footer={true} >
             <Hero />
             <Premier />
-            <Accomplishment />
-            <TrustedBy />
-            <StandOut />
+            {/* <Accomplishment /> */}
+            {/* <TrustedBy /> */}
+            {/* <StandOut /> */}
             <BotTrading />
-            <PricingPlan />
-            <Testimonial />
+            {/* <PricingPlan /> */}
+            {/* <Testimonial /> */}
             <FAQs />
         </Layout>
     )
