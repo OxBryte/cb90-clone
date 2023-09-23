@@ -3,9 +3,6 @@ import { Box, Divider, Flex, HStack, Heading, Image, Text, VStack } from '@chakr
 export default function Alerts() {
     return (
         <VStack w='full' gap='50px'>
-            <VStack bg='white' w='full' minH='400px' p='30px' rounded='16px' align='center' justify='center'>
-                <Text>A promotional banner goes here</Text>
-            </VStack>
             <VStack align='left' w='full' gap='20px' p='40px' rounded='16px' bg='white'>
                 <Heading>Notifications</Heading>
                 <Divider />
@@ -74,6 +71,9 @@ export default function Alerts() {
                         </Flex>
                     </VStack>
                 </HStack>
+            </VStack>
+            <VStack bg='white' w='full' minH='400px' p='30px' rounded='16px' align='center' justify='center'>
+                <Text>A promotional banner goes here</Text>
             </VStack>
         </VStack>
     )

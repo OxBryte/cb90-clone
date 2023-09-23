@@ -28,9 +28,6 @@ export default function Navbar() {
                                     <Box _hover={{ color: 'brand.200' }} cursor='pointer' color={pathname === '/about' && 'brand.200'}>
                                         <Box fontSize='14px' as='a' href='/about'>About</Box>
                                     </Box>
-                                    <Box _hover={{ color: 'brand.200' }} cursor='pointer' color={pathname === '/pricing' && 'brand.200'}>
-                                        <Box fontSize='14px' as='a' href='/pricing'>Pricing</Box>
-                                    </Box>
                                     <Box _hover={{ color: 'brand.200' }} cursor='pointer' color={pathname === '/faqs' && 'brand.200'}>
                                         <Box fontSize='14px' as='a' href='/faqs'>Faqs</Box>
                                     </Box>
