@@ -2,6 +2,7 @@ import { Box, Divider, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@
 import Profile from '../../components/settings/profile'
 import Security from '../../components/settings/security'
 import Notification from '../../components/settings/notification'
+import Subscription from '../../components/settings/subscription'
 
 export default function Settings() {
     return (
@@ -24,7 +25,7 @@ export default function Settings() {
                                 <Security />
                             </TabPanel>
                             <TabPanel>
-                                <p>three!</p>
+                                <Subscription />
                             </TabPanel>
                             <TabPanel>
                                 <Notification />
