@@ -7,6 +7,7 @@ import Alerts from './alerts';
 import Exchange from './exchange';
 import Settings from './settings';
 import Support from './support';
+import MarketOverview from './marketOverview';
 
 export default function Dashboard() {
     const { id } = useParams();
@@ -22,6 +23,8 @@ export default function Dashboard() {
                     <Alerts />
                 ) : id === 'exchange' ? (
                     <Exchange />
+                ) : id === 'market-trend' ? (
+                    <MarketOverview />
                 ) : id === 'settings' ? (
                     <Settings />
                 ) : id === 'support' ? (

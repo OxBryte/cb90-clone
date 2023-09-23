@@ -2,6 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement} from 'chart.js'
 import { Database } from '../../components/data';
+import { Box } from '@chakra-ui/react';
 
 ChartJS.register(
     LineElement, CategoryScale, LinearScale, PointElement
@@ -14,7 +15,7 @@ const LineChartComponent = () => {
             {
                 label: 'User Gain',
                 data: Database.map((data) => data.userGain),
-                borderColor: ['rgba(255,206,86,1)'],
+                borderColor: ['red'],
                 backgroundColor: ['rgba(75,192,192,1)'],
                 pointBackgroundColor: 'rgba(75,192,192,1)',
                 pointBorderColor: 'rgba(220,220,220,1)',
@@ -24,7 +25,7 @@ const LineChartComponent = () => {
             }, {
                 label: 'User Lost',
                 data: Database.map((data) => data.userLost),
-                borderColor: ['rgba(75,192,192,1)'],
+                borderColor: ['green'],
                 backgroundColor: ['rgba(75,192,192,0.2)'],
                 pointBackgroundColor: 'rgba(75,192,192,1)',
                 pointBorderColor: 'rgba(220,220,220,1)',
@@ -50,7 +51,9 @@ const LineChartComponent = () => {
     };
 
     return (
-        <Line data={data} options={options} />
+        <Box w='full' h='full'>
+            <Line data={data} options={options} />
+        </Box>
     );
 }
 
