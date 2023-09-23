@@ -21,9 +21,9 @@ export default function Subscription() {
                         </Thead>
                         <Tbody>
                             <Tr>
-                                <Td>Lite</Td>
-                                <Td>Trial</Td>
-                                <Td>$200</Td>
+                                <Td>Pro</Td>
+                                <Td>Premium</Td>
+                                <Td>$10,000</Td>
                                 <Td>08-08-2023</Td>
                             </Tr>
                         </Tbody>

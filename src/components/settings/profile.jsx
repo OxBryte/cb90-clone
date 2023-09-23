@@ -8,7 +8,7 @@ export default function Profile() {
                     <VStack align='left'>
                         <Heading>My Profile</Heading>
                         <Text fontSize='22px' fontWeight='600'>Personal Information</Text>
-                        <Text color='#4e4e4e'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique.</Text>
+                        <Text color='#4e4e4e'>This is your personal information, make sure you fill it correctly.</Text>
                     </VStack>
                     <Grid templateColumns='repeat(4, 1fr)' gap={6}>
                         <GridItem colSpan={2}>
@@ -40,7 +40,7 @@ export default function Profile() {
                 <VStack mb='30px' w='full' align='left' gap='30px'>
                     <VStack align='left'>
                         <Text fontSize='22px' fontWeight='600'>Contact Information</Text>
-                        <Text color='#4e4e4e'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique.</Text>
+                        <Text color='#4e4e4e'></Text>
                     </VStack>
                     <Grid templateColumns='repeat(4, 1fr)' gap={6}>
                         <GridItem colSpan={2}>
@@ -58,7 +58,7 @@ export default function Profile() {
                         <GridItem colSpan={2}>
                             <Flex flexDir='column' gap={2}>
                                 <Text>Location</Text>
-                                <Input placeholder='United State' type='text' />
+                                <Input placeholder='United States' type='text' />
                             </Flex>
                         </GridItem>
                         <GridItem colSpan={2}>
@@ -70,7 +70,7 @@ export default function Profile() {
                     </Grid>
                     <Divider />
                     <Stack direction={['column', 'row']} justify='space-between' align='center'>
-                        <Text>This account was created on January 10, 2022, 02:12 PM</Text>
+                        <Text>This account was created on January 10, 2023, 02:12 PM</Text>
                         <HStack>
                             <Button variant='solid' border='1px' borderColor='brand.300' px='26px' bg='none' _hover={{ bg: 'brand.200' }} w='fit-content'>Cancel</Button>
                             <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>

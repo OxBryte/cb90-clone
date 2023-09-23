@@ -14,7 +14,7 @@ export default function Exchange() {
                 </HStack>
                 <Divider />
                 <HStack w='full' align='center' justify='space-between'>
-                    <Box><Image src='./binance.svg' alt='' w='100px' /></Box>
+                    <Box><Image src='./coinbase.png' alt='' w='100px' /></Box>
                     <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Get Started</Button>
                 </HStack>
             </VStack>
