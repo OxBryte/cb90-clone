@@ -1,8 +1,11 @@
 import { Box, Flex, HStack, Heading, Popover, PopoverContent, PopoverTrigger, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { PiCurrencyCircleDollar } from 'react-icons/pi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import LineChartComponent from './line';
+
 
 export default function Overview() {
+
     return (
         <>
             <VStack w='full' gap='34px'>
@@ -61,7 +64,7 @@ export default function Overview() {
                         <Text fontWeight={700}>20th Aug, 2023</Text>
                     </VStack>
                 </SimpleGrid>
-                <VStack w='full' h='500px' bg='white' p='40px' justify='space-between' rounded='12px' align='left' gap='20px'>
+                <VStack w='full' bg='white' p='40px' justify='space-between' rounded='12px' align='left' gap='20px'>
                     <VStack align='left' w='full' gap='20px'>
                         <HStack w='full' justify='space-between' align='center'>
                             <Heading>Bot Trading Curve</Heading>
@@ -121,6 +124,9 @@ export default function Overview() {
                                 </Flex>
                             </Flex>
                         </HStack>
+                    </VStack>
+                    <VStack h='400px' w='full'>
+                        <LineChartComponent/>
                     </VStack>
                 </VStack>
             </VStack>

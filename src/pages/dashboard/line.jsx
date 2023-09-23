@@ -1,0 +1,47 @@
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement} from 'chart.js'
+import { Database } from '../../components/data';
+
+ChartJS.register(
+    LineElement, CategoryScale, LinearScale, PointElement
+)
+
+const LineChartComponent = () => {
+    const data = {
+        labels: Database.map((data) => data.year),
+        datasets: [
+            {
+                label: 'Sales for 2023 (in thousands)',
+                data: Database.map((data) => data.userGain),
+                borderColor: ['rgba(255,206,86,1)'],
+                backgroundColor: ['rgba(75,192,192,1)'],
+                pointBackgroundColor: 'rgba(75,192,192,1)',
+                pointBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBackgroundColor: 'rgba(220,220,220,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                tension: 0.6
+            }
+        ]
+    };
+
+    const options = {
+        title: {
+            display: true,
+            text: 'Line Chart'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+    return (
+        <Line data={data} options={options} />
+    );
+}
+
+export default LineChartComponent;

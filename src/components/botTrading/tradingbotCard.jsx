@@ -1,5 +1,6 @@
 import { Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Stack, Text, VStack } from '@chakra-ui/react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import LineChartComponent from '../../pages/dashboard/line'
 
 export default function TradingbotCard({ botTitle }) {
     return (
@@ -63,7 +64,7 @@ export default function TradingbotCard({ botTitle }) {
                     </HStack>
                 </VStack>
                 <VStack align='left' gap='20px'>
-                    <h1>chart here</h1>
+                    <LineChartComponent />
                 </VStack>
             </Stack>
         </VStack>
