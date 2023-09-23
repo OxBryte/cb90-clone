@@ -30,7 +30,7 @@ export default function Dashboard() {
                 ) : id === 'support' ? (
                     <Support />
                 ) : (
-                    <Text w='full' display='flex' justifyContent='center'>Be Patient... 👷‍♂️</Text>
+                    <Text w='full' display='flex' justifyContent='center'>Coming Soon... 👷‍♂️</Text>
                 )
             }
         </DashboardLayout>

@@ -12,7 +12,7 @@ export default function TradingbotCard({ botTitle }) {
                 <Box mr='30px'>
                     <Popover trigger="hover" placement='bottom-end'>
                         <PopoverTrigger>
-                            <Flex cursor='pointer' align='center' h='fit-content' justify='space-between' w='130px' p='12px' bg='brand.900' rounded='12px' gap='12px'>
+                            <Flex cursor='pointer' align='center' h='fit-content' justify='space-between' w='130px' p='12px' bg='brand.900' rounded='12px' gap='8px'>
                                 This week
                                 <MdKeyboardArrowDown size={25} />
                             </Flex>

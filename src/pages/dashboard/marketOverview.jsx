@@ -15,8 +15,8 @@ export default function MarketOverview() {
         script.async = true;
 
         script.innerHTML = JSON.stringify({
-            "width": "",
-            "height": "100vh",
+            "width": "100%",
+            "height": "1000",
             "defaultColumn": "overview",
             "screener_type": "crypto_mkt",
             "displayCurrency": "USD",

@@ -51,7 +51,19 @@ const LineChartComponent = () => {
     };
 
     return (
-        <Box w='full' h='full'>
+        //the box should be at the center of the div and occupy the space
+        <Box  w= 'full'
+            
+              bg='white' 
+              p='5' 
+              borderRadius='lg' 
+              boxShadow='md' 
+              mt='5' 
+              mb='4' 
+              mx='auto' 
+              maxW='1800px'
+              
+              >
             <Line data={data} options={options} />
         </Box>
     );
