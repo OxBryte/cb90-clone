@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement} from 'chart.js'
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
 import { Database } from '../../components/data';
 import { Box } from '@chakra-ui/react';
 
@@ -52,18 +52,7 @@ const LineChartComponent = () => {
 
     return (
         //the box should be at the center of the div and occupy the space
-        <Box  w= 'full'
-            
-              bg='white' 
-              p='5' 
-              borderRadius='lg' 
-              boxShadow='md' 
-              mt='5' 
-              mb='4' 
-              mx='auto' 
-              maxW='1800px'
-              
-              >
+        <Box w='full' bg='white' p='5' borderRadius='lg' boxShadow='md' mt='5' mb='4' mx='auto' maxH='500px'>
             <Line data={data} options={options} />
         </Box>
     );

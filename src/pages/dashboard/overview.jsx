@@ -125,7 +125,7 @@ export default function Overview() {
                             </Flex>
                         </HStack>
                     </VStack>
-                    <VStack h='400px' align={'left'}>
+                    <VStack minH='400px' align={'left'}>
                         <LineChartComponent />
                     </VStack>
                 </VStack>
