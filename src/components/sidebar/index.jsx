@@ -89,9 +89,9 @@ export default function Sidebar() {
                 </UnorderedList>
             </VStack>
             <UnorderedList m='0' listStyleType='none' spacing='10px' justifyContent='end'>
-                {SidebarData2.map((item, i) => {
+                {SidebarData2.map((item, idx) => {
                     return (
-                        <NavLink to={item.link} key={i}>
+                        <NavLink to={item.link} key={idx}>
                             <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
                                 <HStack color={item.title === 'Logout' && 'red.400'}>
                                     {item.icon}

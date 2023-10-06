@@ -22,7 +22,7 @@ export default function Signup() {
                             <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
                         </Link>
                     </Box>
-                    <VStack align='left' py='40px' gap='50px'>
+                    <VStack w='full' align='left' py='40px' gap='50px'>
                         <VStack align='left' gap='20px'>
                             <Heading>Create an Account</Heading>
                             <Text maxW='530px'>Welcome to CB90-Pro! Join the future of crypto trading by creating your account below</Text>
