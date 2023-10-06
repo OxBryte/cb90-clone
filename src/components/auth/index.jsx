@@ -7,7 +7,65 @@ import axios from 'axios'
 
 export function LoginComp() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const toast = useToast()
+    const navigate = useNavigate()
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // props.logIn();
+        setIsLoading(true)
+        axios
+            .post("https://axio-all-04.herokuapp.com/api/auth/login", {
+                email: email,
+                password: password,
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    toast({
+                        title: "Signed in successfully",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true,
+                    });
+
+                    // localStorage.setItem("token", response.data.token);
+
+                    setIsLoading(false)
+                    navigate("/dashboard");
+
+                    // console.log(response.data.token);
+                    // const token = localStorage.getItem("token");
+                    // console.log(token);
+                } else {
+                    toast({
+                        title: "Something went wrong",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true,
+                    });
+                    setIsLoading(false)
+
+                }
+                // console.log(response);
+            })
+            .catch((error) => {
+                toast({
+                    title: "Something went wrong",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                setIsLoading(false)
+                console.log(error.response);
+            });
+    };
+
 
     return (
         <>
@@ -22,16 +80,16 @@ export function LoginComp() {
                     <Text>OR</Text>
                     <Divider borderColor='brand.100' />
                 </HStack>
-                <FormControl>
+                <FormControl as='form' onSubmit={handleSubmit}>
                     <VStack gap='20px' align='left'>
                         <Box>
                             <Text mb='8px'>Email address</Text>
-                            <Input autoComplete="off" w='full' placeholder='Enter valid email address' type='email' size='md' />
+                            <Input autoComplete="off" w='full' placeholder='Enter valid email address' type='email' size='md' value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Box>
                         <Box>
                             <Text mb='8px'>Password</Text>
                             <InputGroup>
-                                <Input autoComplete="off" w='full' placeholder='Enter your passoword' size='md' type={visible ? 'text' : 'password'} />
+                                <Input autoComplete="off" w='full' placeholder='Enter your passoword' size='md' type={visible ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
                                 {
                                     visible ? (
                                         <InputRightElement onClick={() => setVisible(false)} cursor='pointer'><HiEyeSlash /></InputRightElement>
@@ -42,8 +100,8 @@ export function LoginComp() {
                             </InputGroup>
                         </Box>
                         <Box as='a' href='/recover' cursor='pointer' bgClip='text' bgGradient='linear(to-b, brand.200, brand.400)' fontWeight={600}>Forget password?</Box>
-                        <Button as='a' href='/dashboard' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
-                            Login
+                        <Button onClick={handleSubmit} fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                            {isLoading ? <Spinner size='md' /> : 'Login'}
                         </Button>
                         <Text>Don&apos;t have an account? <Box as='a' href='/signup' cursor='pointer' fontWeight='600' bgGradient='linear(to-b, brand.200, brand.400)' bgClip='text'>Register now</Box></Text>
                     </VStack>
@@ -153,8 +211,6 @@ export function SignupComp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        let formData = new FormData();
 
         const combinedInput = {
             ...input,
