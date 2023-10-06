@@ -17,6 +17,7 @@ export default function Signup() {
                     <Carousel />
                 </VStack>
                 <ContainLayout>
+                    <VStack w='full' align='left'>
                     <Box mt='70px'>
                         <Link to='/'>
                             <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
@@ -28,6 +29,7 @@ export default function Signup() {
                             <Text maxW='530px'>Welcome to CB90-Pro! Join the future of crypto trading by creating your account below</Text>
                         </VStack>
                         <SignupComp />
+                    </VStack>
                     </VStack>
                 </ContainLayout>
             </SimpleGrid>

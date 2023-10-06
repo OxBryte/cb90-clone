@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
+import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
@@ -26,12 +26,12 @@ export function LoginComp() {
                     <VStack gap='20px' align='left'>
                         <Box>
                             <Text mb='8px'>Email address</Text>
-                            <Input placeholder='Enter valid email address' type='email' size='md' />
+                            <Input autoComplete="off" w='full' placeholder='Enter valid email address' type='email' size='md' />
                         </Box>
                         <Box>
                             <Text mb='8px'>Password</Text>
                             <InputGroup>
-                                <Input placeholder='Enter your passoword' size='md' type={visible ? 'text' : 'password'} />
+                                <Input autoComplete="off" w='full' placeholder='Enter your passoword' size='md' type={visible ? 'text' : 'password'} />
                                 {
                                     visible ? (
                                         <InputRightElement onClick={() => setVisible(false)} cursor='pointer'><HiEyeSlash /></InputRightElement>
@@ -56,15 +56,16 @@ export function LoginComp() {
 export function SignupComp() {
 
     const [visible, setVisible] = useState(false)
+    const { toast } = useToast();
 
     const navigate = useNavigate();
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
         email: "",
-        country: "",
+        // country: "",
         password: "",
-        confirmPassword: "",
+        // confirmPassword: "",
 
     });
 
@@ -150,33 +151,51 @@ export function SignupComp() {
 
         let formData = new FormData();
 
-        for (const entry in input) {
-            formData.append(entry, input[entry]);
-        }
+        const combinedInput = {
+            ...input,
+            name: `${input.firstname} ${input.lastname}`
+        };
+
+        // Remove firstname, lastname, and confirmPassword from the data to be sent
+        delete combinedInput.firstname;
+        delete combinedInput.lastname;
+        delete combinedInput.confirmPassword;
 
         axios
-            .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", input,
+            .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", combinedInput,
                 { headers: { 'content-type': 'application/json' } })
             .then((res) => {
                 if (res.status === 200) {
-                    Toast.fire({
-                        icon: "success",
-                        title: "Signed in successfully",
+                    toast({
+                        title: 'Account created.',
+                        description: "We've created your account for you.",
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    })
+
+                    setInput({
+                        firstname: "",
+                        lastname: "",
+                        email: "",
+                        password: "",
+                        confirmPassword: "",
                     });
+
                     navigate("/dashboard");
                 } else {
-                    Toast.fire({
-                        icon: "error",
-                        title: "Something might be wrong",
-                    });
+                    toast({
+                        title: 'Account created.',
+                        description: "We've created your account for you.",
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    })
                 }
-
+                
             })
             .catch((err) => {
-                Toast.fire({
-                    icon: "error",
-                    title: "Something might be wrong",
-                });
+                console.log(err);
 
             });
     };
@@ -199,22 +218,22 @@ export function SignupComp() {
                         <SimpleGrid columns={[1, 2]} w='full' gap='20px'>
                             <Box>
                                 <Text mb='8px'>First Name</Text>
-                                <Input type='text' placeholder='Enter first name' size='md' name='firstname' value={input.firstname} onChange={onInputChange} onBlur={validateInput} />
+                                <Input type='text' autoComplete="off" w='full' placeholder='Enter first name' size='md' name='firstname' value={input.firstname} onChange={onInputChange} onBlur={validateInput} />
                                 {error.firstname && <Text as='span' color='red.500'>{error.firstname}</Text>}
                             </Box>
                             <Box>
                                 <Text mb='8px'>Last Name</Text>
-                                <Input type='text' placeholder='Enter last name' size='md' name='lastname' value={input.lastname} onChange={onInputChange} onBlur={validateInput} />
+                                <Input type='text' autoComplete="off" w='full' placeholder='Enter last name' size='md' name='lastname' value={input.lastname} onChange={onInputChange} onBlur={validateInput} />
                                 {error.lastname && <Text as='span' color='red.500'>{error.lastname}</Text>}
                             </Box>
                             <Box>
                                 <Text mb='8px'>Email address</Text>
-                                <Input type='email' placeholder='Enter valid email address' name='email' size='md' value={input.email} onChange={onInputChange} onBlur={validateInput} />
+                                <Input type='email' autoComplete="off" w='full' placeholder='Enter valid email address' name='email' size='md' value={input.email} onChange={onInputChange} onBlur={validateInput} />
                                 {error.email && <Text as='span' color='red.500'>{error.email}</Text>}
                             </Box>
                             <Box>
                                 <Text mb='8px'>Country</Text>
-                                <Select color='gray.500' placeholder='Select Country'>
+                                <Select color='gray.500' autoComplete="off" w='full' placeholder='Select Country'>
                                     <option value="">default</option>
                                     <option value="">default</option>
                                     <option value="">default</option>
@@ -224,7 +243,7 @@ export function SignupComp() {
                             <Box>
                                 <Text mb='8px'>Password</Text>
                                 <InputGroup>
-                                    <Input placeholder='Enter a secure password' size='md' name='password' type={visible ? 'text' : 'password'} value={input.password} onChange={onInputChange} onBlur={validateInput} />
+                                    <Input autoComplete="off" w='full' placeholder='Enter a secure password' size='md' name='password' type={visible ? 'text' : 'password'} value={input.password} onChange={onInputChange} onBlur={validateInput} />
                                     {
                                         visible ? (
                                             <InputRightElement onClick={() => setVisible(false)} cursor='pointer'><HiEyeSlash /></InputRightElement>
@@ -238,7 +257,7 @@ export function SignupComp() {
                             <Box>
                                 <Text mb='8px'>Confirm Password</Text>
                                 <InputGroup>
-                                    <Input placeholder='Confirm your password' size='md' name='confirmPassword' type={visible ? 'text' : 'password'} value={input.confirmPassword} onChange={onInputChange} onBlur={validateInput} />
+                                    <Input autoComplete="off" w='full' placeholder='Confirm your password' size='md' name='confirmPassword' type={visible ? 'text' : 'password'} value={input.confirmPassword} onChange={onInputChange} onBlur={validateInput} />
                                     {
                                         visible ? (
                                             <InputRightElement onClick={() => setVisible(false)} cursor='pointer'><HiEyeSlash /></InputRightElement>
@@ -263,7 +282,7 @@ export function SignupComp() {
                             </Checkbox>
                         </VStack>
                         <Button
-                        onClick={handleSubmit}
+                            onClick={handleSubmit}
                             fontSize='14px'
                             px='74px'
                             w='fit-content'
@@ -308,7 +327,7 @@ export function ForgottenPasswordComp() {
                 <VStack gap='20px' align='left'>
                     <Box>
                         <Text mb='8px'>Email address</Text>
-                        <Input placeholder='Enter valid email address' type='email' size='md' />
+                        <Input autoComplete="off" w='full' placeholder='Enter valid email address' type='email' size='md' />
                     </Box>
                     <Button as='a' href='/' fontSize='14px' px='74px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
                         Send reset email
