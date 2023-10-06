@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast } from '@chakra-ui/react'
+import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast, Spinner } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
@@ -55,8 +55,9 @@ export function LoginComp() {
 
 export function SignupComp() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
-    const { toast } = useToast();
+    const toast = useToast();
 
     const navigate = useNavigate();
     const [input, setInput] = useState({
@@ -120,6 +121,8 @@ export function SignupComp() {
                 case "password":
                     if (!value) {
                         stateObj[name] = "Please enter Password.";
+                    } else if (value.length < 8) { // Checking for password length
+                        stateObj[name] = "Password should be at least 8 characters.";
                     } else if (input.confirmPassword && value !== input.confirmPassword) {
                         stateObj["confirmPassword"] =
                             "Password and Confirm Password does not match.";
@@ -133,6 +136,8 @@ export function SignupComp() {
                 case "confirmPassword":
                     if (!value) {
                         stateObj[name] = "Please enter Confirm Password.";
+                    } else if (value.length < 8) { // Checking for confirm password length
+                        stateObj[name] = "Confirm Password should be at least 8 characters.";
                     } else if (input.password && value !== input.password) {
                         stateObj[name] = "Password and Confirm Password does not match.";
                     }
@@ -160,43 +165,41 @@ export function SignupComp() {
         delete combinedInput.firstname;
         delete combinedInput.lastname;
         delete combinedInput.confirmPassword;
+        setIsLoading(true)
 
         axios
             .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", combinedInput,
                 { headers: { 'content-type': 'application/json' } })
             .then((res) => {
-                if (res.status === 200) {
+                if (res.status === 200 && res.data && res.data.success) {
                     toast({
-                        title: 'Account created.',
-                        description: "We've created your account for you.",
-                        status: 'success',
-                        duration: 9000,
+                        title: "Signed in successfully",
+                        status: "success",
+                        duration: 3000,
                         isClosable: true,
-                    })
-
-                    setInput({
-                        firstname: "",
-                        lastname: "",
-                        email: "",
-                        password: "",
-                        confirmPassword: "",
                     });
-
+                    setIsLoading(false)
                     navigate("/dashboard");
                 } else {
+                    const errorMessage = res.data?.error || "Something might be wrong";
                     toast({
-                        title: 'Account created.',
-                        description: "We've created your account for you.",
-                        status: 'success',
-                        duration: 9000,
+                        title: errorMessage,
+                        status: "error",
+                        duration: 3000,
                         isClosable: true,
-                    })
+                    });
+                    setIsLoading(false)
                 }
-                
             })
             .catch((err) => {
-                console.log(err);
-
+                const errorMessage = err.response?.data?.error || "Something might be wrong";
+                toast({
+                    title: errorMessage,
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                setIsLoading(false)
             });
     };
 
@@ -308,7 +311,7 @@ export function SignupComp() {
                                 !input.password ||
                                 !input.confirmPassword
                             }>
-                            Register
+                            {isLoading ? <Spinner size='md' /> : 'Register'}
                         </Button>
                         <Text>Already have an account? <Box as='a' href='/login' cursor='pointer' fontWeight='600' bgGradient='linear(to-b, brand.200, brand.400)' bgClip='text'>Login now</Box></Text>
                     </VStack>
