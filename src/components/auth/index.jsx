@@ -15,13 +15,14 @@ export function LoginComp() {
     const toast = useToast()
     const navigate = useNavigate()
 
+    const loginEndpoint = import.meta.env.VITE_LOGIN_URL;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         setIsLoading(true)
         axios
-            .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/login", {
+            .post(loginEndpoint, {
                 email: email,
                 password: password,
             })
@@ -119,6 +120,9 @@ export function SignupComp() {
     const toast = useToast();
     const navigate = useNavigate();
     const [country, setCountry] = useState('');
+
+    const registerEndpoint = import.meta.env.VITE_REGISTER_URL;
+
 
     const handleCountryChange = (event) => {
         setCountry(event.target.value);
@@ -236,7 +240,7 @@ export function SignupComp() {
         setIsLoading(true)
 
         axios
-            .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", combinedInput,
+            .post(registerEndpoint, combinedInput,
                 { headers: { 'content-type': 'application/json' } })
             .then((res) => {
                 if (res.status === 200 && res.data && res.data.status === true) {
@@ -247,6 +251,16 @@ export function SignupComp() {
                         duration: 3000,
                         isClosable: true,
                     });
+
+                    setInput({
+                        firstname: "",
+                        lastname: "",
+                        email: "",
+                        password: "",
+                        confirmPassword: "",
+                        country: "",
+                    });
+
                     setModal(true)
                     setIsLoading(false)
                     // navigate("/dashboard");
