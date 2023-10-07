@@ -16,10 +16,12 @@ export const userSlice = createSlice({
         },
         setToken: (state, action) => {
             state.token = action.payload;
+            state.isAuthenticated = !!action.payload;
         },
         logoutUser: (state) => {
             state.user = null;
             state.token = null;
+            state.isAuthenticated = false;
         },
     }
 });

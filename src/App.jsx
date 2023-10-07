@@ -16,12 +16,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      dispatch(setToken(token));
+    const tokenFromLocalStorage = localStorage.getItem('token');
+    if (tokenFromLocalStorage) {
+      dispatch(setToken(tokenFromLocalStorage));
     }
-
   }, []);
 
 
