@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast, Spinner } from '@chakra-ui/react'
+import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast, Spinner, Flex, Heading } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
@@ -113,6 +113,7 @@ export function LoginComp() {
 
 export function SignupComp() {
 
+    const [modal, setModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
     const toast = useToast();
@@ -238,7 +239,7 @@ export function SignupComp() {
             .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", combinedInput,
                 { headers: { 'content-type': 'application/json' } })
             .then((res) => {
-                if (res.status === 200 || res.data || res.data.success) {
+                if (res.status === 200 && res.data && res.data.status === true) {
                     const successMessage = res.data?.message;
                     toast({
                         title: successMessage,
@@ -246,8 +247,9 @@ export function SignupComp() {
                         duration: 3000,
                         isClosable: true,
                     });
+                    setModal(true)
                     setIsLoading(false)
-                    navigate("/dashboard");
+                    // navigate("/dashboard");
                 } else {
                     const errorMessage = res.data?.message;
                     toast({
@@ -260,7 +262,7 @@ export function SignupComp() {
                 }
             })
             .catch((err) => {
-                const errorMessage = err.data?.message;
+                const errorMessage = err.response?.data?.message;
                 toast({
                     title: errorMessage,
                     status: "error",
@@ -273,6 +275,24 @@ export function SignupComp() {
 
     return (
         <>
+            {modal && (
+                <>
+                    <Flex align='center' justify='center' position='fixed' top='0' left='0' zIndex='100' bgColor='blackAlpha.300' backdropFilter='blur(5px)' p='30px' w='100%' h='100vh' overflow='hidden'>
+                        <Box w='100%' h='100%' top='0' left='0' position='fixed' onClick={() => setModal(false)} />
+                        <Box zIndex={100} position='relative'>
+                            <Box maxW='500px' boxShadow='xl' bg='white' rounded='30px' p='30px'>
+                                <VStack gap='40px'>
+                                    <Heading>Congratulations</Heading>
+                                    <Text textAlign='center'>Click here to schedule a meeting with our representative on how to proceed and activate your account.</Text>
+                                    <Button fontSize='14px' px='40px' py='26px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                                        Schedule a meeting
+                                    </Button>
+                                </VStack>
+                            </Box>
+                        </Box>
+                    </Flex>
+                </>
+            )}
             <VStack w='full' gap='20px' align='left'>
                 {/* <HStack gap='30px'>
                         <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
