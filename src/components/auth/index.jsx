@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { getNames } from 'country-list'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
-import { setUser } from '../../redux/userSlice'
+import { setUser, setToken } from '../../redux/userSlice'
 
 export function LoginComp() {
 
@@ -39,7 +39,8 @@ export function LoginComp() {
                         isClosable: true,
                     });
 
-                    localStorage.setItem("userToken", res.data.token);
+                    localStorage.setItem("token", res.data.token);
+                    dispatch(setToken(res.data.token));
 
                     setIsLoading(false)
                     dispatch(setUser(res.data));

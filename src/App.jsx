@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux'
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import Home from "./pages/home"
 import Faqs from "./pages/faqs"
@@ -6,13 +7,24 @@ import Login from "./pages/login"
 import Signup from "./pages/signup"
 import ForgottenPassword from "./pages/forgottenPassword"
 import Dashboard from "./pages/dashboard"
-import { useSelector } from "react-redux"
-import { selectUser } from "./redux/userSlice"
-// import ProtectedRoute from "./protected"
+import { setToken } from "./redux/userSlice"
+import { useEffect } from "react"
+import ProtectedRoute from './components/protected'
 // import TradingBot from "./pages/tradingbot"
 
 function App() {
-  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      dispatch(setToken(token));
+    }
+
+  }, []);
+
+
   return (
     <>
       <Router>
@@ -23,11 +35,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/recover" element={<ForgottenPassword />} />
-          {user ? (
-            <Route path="/:id" element={<Dashboard />} />
-          ) : (
-            <Route path="/login" element={<Login />} />
-          )}
+          <Route path="/:id" element={
+            <>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            </>
+          } />
           {/* <Route path="/tradingbot" element={<TradingBot />} /> */}
         </Routes>
       </Router>

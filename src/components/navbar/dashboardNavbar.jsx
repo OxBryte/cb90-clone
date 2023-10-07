@@ -3,13 +3,12 @@ import { FiBell, FiUser } from 'react-icons/fi'
 import { TbLogout2 } from 'react-icons/tb'
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { selectUser } from '../../redux/userSlice';
 
 export default function DashboardNavbar() {
 
   const location = useLocation();
   const { pathname } = location;
-  const user = useSelector(selectUser);
+  const user = useSelector((state) => state.user.user);
   console.log(user, 'this');
 
   return (
