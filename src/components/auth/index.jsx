@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
 import { useNavigate } from 'react-router-dom'
+import { getNames } from 'country-list'
 import axios from 'axios'
 
 export function LoginComp() {
@@ -69,7 +70,7 @@ export function LoginComp() {
 
     return (
         <>
-            <VStack gap='20px' align='left'>
+            <VStack w='full' gap='20px' align='left'>
                 {/* <HStack gap='30px'>
                         <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
                         <Button px='30px' variant='outline'>Login with Facebook</Button>
@@ -80,8 +81,8 @@ export function LoginComp() {
                     <Text>OR</Text>
                     <Divider borderColor='brand.100' />
                 </HStack>
-                <FormControl as='form' onSubmit={handleSubmit}>
-                    <VStack gap='20px' align='left'>
+                <FormControl as='form' w='full' onSubmit={handleSubmit}>
+                    <VStack gap='20px' w='full' align='left'>
                         <Box>
                             <Text mb='8px'>Email address</Text>
                             <Input autoComplete="off" w='full' placeholder='Enter valid email address' type='email' size='md' value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -116,15 +117,27 @@ export function SignupComp() {
     const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
     const toast = useToast();
-
     const navigate = useNavigate();
+    const [country, setCountry] = useState('');
+
+    const handleCountryChange = (event) => {
+        setCountry(event.target.value);
+    };
+
+    const countryNames = getNames();
+    const countryOptions = countryNames.map((name) => (
+        <option key={name} value={name}>
+            {name}
+        </option>
+    ));
+
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
         email: "",
-        // country: "",
+        country: '',
         password: "",
-        // confirmPassword: "",
+        confirmPassword: "",
 
     });
 
@@ -132,7 +145,7 @@ export function SignupComp() {
         firstName: "",
         lastName: "",
         email: "",
-        country: "",
+        country: '',
         password: "",
         confirmPassword: "",
     });
@@ -214,7 +227,8 @@ export function SignupComp() {
 
         const combinedInput = {
             ...input,
-            name: `${input.firstname} ${input.lastname}`
+            name: `${input.firstname} ${input.lastname}`,
+            country: country
         };
 
         // Remove firstname, lastname, and confirmPassword from the data to be sent
@@ -292,10 +306,8 @@ export function SignupComp() {
                             </Box>
                             <Box>
                                 <Text mb='8px'>Country</Text>
-                                <Select color='gray.500' autoComplete="off" w='full' placeholder='Select Country'>
-                                    <option value="">default</option>
-                                    <option value="">default</option>
-                                    <option value="">default</option>
+                                <Select color='gray.500' autoComplete="off" w='full' placeholder='Select Country' value={country} onChange={handleCountryChange} >
+                                    {countryOptions}
                                 </Select>
                                 {error.country && <Text as='span' color='red.500'>{error.country}</Text>}
                             </Box>
@@ -341,28 +353,36 @@ export function SignupComp() {
                             </Checkbox>
                         </VStack>
                         <Button
-                            onClick={handleSubmit}
+                            onClick={
+                                !input.firstname ||
+                                    !input.lastname ||
+                                    !country ||
+                                    !input.email ||
+                                    !input.password ||
+                                    !input.confirmPassword ? '' : handleSubmit}
                             fontSize='14px'
                             px='74px'
                             w='fit-content'
-                            bgGradient={!input.firstname ||
+                            bgGradient={
+                                !input.firstname ||
                                 !input.lastname ||
-                                // !input.country ||
+                                !country ||
                                 !input.email ||
                                 !input.password ||
                                 !input.confirmPassword ? 'linear(to-b, brand.800, brand.800)' : 'linear(to-b, brand.200, brand.400)'}
                             color="white"
                             _hover={{ bg: 'brand.200', color: 'white' }}
-                            cursor={!input.firstname ||
+                            cursor={
+                                !input.firstname ||
                                 !input.lastname ||
-                                // !input.country ||
+                                !country ||
                                 !input.email ||
                                 !input.password ||
                                 !input.confirmPassword ? 'not-allowed' : 'pointer'}
                             disabled={
                                 !input.firstname ||
                                 !input.lastname ||
-                                // !input.country ||
+                                !country ||
                                 !input.email ||
                                 !input.password ||
                                 !input.confirmPassword

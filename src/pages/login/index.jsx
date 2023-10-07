@@ -17,17 +17,19 @@ export default function Login() {
                     <Carousel />
                 </VStack>
                 <ContainLayout>
-                    <Box mt='70px'>
-                        <Link to='/'>
-                            <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
-                        </Link>
-                    </Box>
-                    <VStack align='left' py='40px' gap='50px'>
-                        <VStack align='left' gap='20px'>
-                            <Heading>Login to CB90-Pro Dashboard</Heading>
-                            <Text maxW='530px'>Your dashboard is just a few clicks away! Please provide the necessary information below to access it.</Text>
+                    <VStack align='left' w='full'>
+                        <Box mt='70px'>
+                            <Link to='/'>
+                                <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
+                            </Link>
+                        </Box>
+                        <VStack w='full' align='left' py='40px' gap='50px'>
+                            <VStack align='left' gap='20px'>
+                                <Heading>Login to CB90-Pro Dashboard</Heading>
+                                <Text maxW='530px'>Your dashboard is just a few clicks away! Please provide the necessary information below to access it.</Text>
+                            </VStack>
+                            <LoginComp />
                         </VStack>
-                        <LoginComp />
                     </VStack>
                 </ContainLayout>
             </SimpleGrid>
