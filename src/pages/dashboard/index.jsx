@@ -8,9 +8,12 @@ import Exchange from './exchange';
 import Settings from './settings';
 import Support from './support';
 import MarketOverview from './marketOverview';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/userSlice'
 
 export default function Dashboard() {
     const { id } = useParams();
+    const user = useSelector(selectUser);
 
     return (
         <DashboardLayout sidebar={true} dashboardNav={true}>

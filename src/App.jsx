@@ -6,24 +6,31 @@ import Login from "./pages/login"
 import Signup from "./pages/signup"
 import ForgottenPassword from "./pages/forgottenPassword"
 import Dashboard from "./pages/dashboard"
+import { useSelector } from "react-redux"
+import { selectUser } from "./redux/userSlice"
+// import ProtectedRoute from "./protected"
 // import TradingBot from "./pages/tradingbot"
 
 function App() {
-
+  const user = useSelector(selectUser);
   return (
     <>
-    <Router>
-      <Routes>
+      <Router>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/recover" element={<ForgottenPassword />} />
-          <Route path="/:id" element={<Dashboard />} />
+          {user ? (
+            <Route path="/:id" element={<Dashboard />} />
+          ) : (
+            <Route path="/login" element={<Login />} />
+          )}
           {/* <Route path="/tradingbot" element={<TradingBot />} /> */}
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </>
   )
 }

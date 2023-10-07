@@ -1,12 +1,16 @@
 import { Avatar, Flex, HStack, Popover, PopoverContent, PopoverTrigger, Text, VStack } from '@chakra-ui/react'
 import { FiBell, FiUser } from 'react-icons/fi'
 import { TbLogout2 } from 'react-icons/tb'
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { selectUser } from '../../redux/userSlice';
 
 export default function DashboardNavbar() {
 
   const location = useLocation();
   const { pathname } = location;
+  const user = useSelector(selectUser);
+  console.log(user, 'this');
 
   return (
     <HStack bg='white' justify='space-between' align='center' px='30px' py='16px' w='full' boxShadow='sm' m='0'>
@@ -15,7 +19,12 @@ export default function DashboardNavbar() {
         <FiBell size={22} />
         <Popover trigger='hover' placement='bottom-end' >
           <PopoverTrigger>
-            <Avatar size='sm' name='Christian Nwamba' src='https://bit.ly/code-beast' />
+            <Flex items='center' gap='10px'>
+              <Text>
+                {user.user.first_name}
+              </Text>
+              <Avatar size='sm' name='Christian Nwamba' src='https://bit.ly/code-beast' />
+            </Flex>
           </PopoverTrigger>
           <PopoverContent w='fit-contnet'>
             <VStack bg='white' rounded='12px' gap='0'>

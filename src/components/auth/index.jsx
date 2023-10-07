@@ -5,6 +5,8 @@ import { HiEye, HiEyeSlash } from 'react-icons/hi2'
 import { useNavigate } from 'react-router-dom'
 import { getNames } from 'country-list'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../redux/userSlice'
 
 export function LoginComp() {
 
@@ -16,6 +18,7 @@ export function LoginComp() {
     const navigate = useNavigate()
 
     const loginEndpoint = import.meta.env.VITE_LOGIN_URL;
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,14 +39,13 @@ export function LoginComp() {
                         isClosable: true,
                     });
 
-                    // localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("userToken", res.data.token);
 
                     setIsLoading(false)
+                    dispatch(setUser(res.data));
                     navigate("/dashboard");
 
-                    // console.log(response.data.token);
                     // const token = localStorage.getItem("token");
-                    // console.log(token);
                 } else {
                     const errorMessage = res.data?.message || 'Something went wrong';
                     toast({
