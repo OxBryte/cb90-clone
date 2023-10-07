@@ -19,17 +19,17 @@ export function LoginComp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // props.logIn();
         setIsLoading(true)
         axios
-            .post("https://axio-all-04.herokuapp.com/api/auth/login", {
+            .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/login", {
                 email: email,
                 password: password,
             })
-            .then((response) => {
-                if (response.status === 200) {
+            .then((res) => {
+                if (res.status === 200) {
+                    const successMessage = res.data?.message;
                     toast({
-                        title: "Signed in successfully",
+                        title: successMessage,
                         status: "success",
                         duration: 3000,
                         isClosable: true,
@@ -44,26 +44,25 @@ export function LoginComp() {
                     // const token = localStorage.getItem("token");
                     // console.log(token);
                 } else {
+                    const errorMessage = res.data?.message || 'Something went wrong';
                     toast({
-                        title: "Something went wrong",
+                        title: errorMessage,
                         status: "error",
                         duration: 3000,
                         isClosable: true,
                     });
                     setIsLoading(false)
-
                 }
-                // console.log(response);
             })
-            .catch((error) => {
+            .catch((err) => {
+                const errorMessage = err.data?.status === 'false' && err.data?.message || 'Email & Password does not match.';
                 toast({
-                    title: "Something went wrong",
+                    title: errorMessage,
                     status: "error",
                     duration: 3000,
                     isClosable: true,
                 });
                 setIsLoading(false)
-                console.log(error.response);
             });
     };
 
@@ -132,8 +131,8 @@ export function SignupComp() {
     ));
 
     const [input, setInput] = useState({
-        firstname: "",
-        lastname: "",
+        first_name: "",
+        last_name: "",
         email: "",
         country: '',
         password: "",
@@ -142,8 +141,8 @@ export function SignupComp() {
     });
 
     const [error, setError] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         country: '',
         password: "",
@@ -165,12 +164,12 @@ export function SignupComp() {
             const stateObj = { ...prev, [name]: "" };
 
             switch (name) {
-                case "firstname":
+                case "first_name":
                     if (!value) {
                         stateObj[name] = "Please enter Firstname.";
                     }
                     break;
-                case "lastname":
+                case "last_name":
                     if (!value) {
                         stateObj[name] = "Please enter Lastname.";
                     }
@@ -227,13 +226,11 @@ export function SignupComp() {
 
         const combinedInput = {
             ...input,
-            name: `${input.firstname} ${input.lastname}`,
+            // name: `${input.firstname} ${input.lastname}`,
             country: country
         };
 
         // Remove firstname, lastname, and confirmPassword from the data to be sent
-        delete combinedInput.firstname;
-        delete combinedInput.lastname;
         delete combinedInput.confirmPassword;
         setIsLoading(true)
 
@@ -241,9 +238,10 @@ export function SignupComp() {
             .post("https://cb90-pro-5925c5e641ac.herokuapp.com/api/register", combinedInput,
                 { headers: { 'content-type': 'application/json' } })
             .then((res) => {
-                if (res.status === 200 && res.data && res.data.success) {
+                if (res.status === 200 || res.data || res.data.success) {
+                    const successMessage = res.data?.message;
                     toast({
-                        title: "Signed in successfully",
+                        title: successMessage,
                         status: "success",
                         duration: 3000,
                         isClosable: true,
@@ -251,7 +249,7 @@ export function SignupComp() {
                     setIsLoading(false)
                     navigate("/dashboard");
                 } else {
-                    const errorMessage = res.data?.error || "Something might be wrong";
+                    const errorMessage = res.data?.message;
                     toast({
                         title: errorMessage,
                         status: "error",
@@ -262,7 +260,7 @@ export function SignupComp() {
                 }
             })
             .catch((err) => {
-                const errorMessage = err.response?.data?.error || "Something might be wrong";
+                const errorMessage = err.data?.message;
                 toast({
                     title: errorMessage,
                     status: "error",
@@ -291,13 +289,13 @@ export function SignupComp() {
                         <SimpleGrid columns={[1, 2]} w='full' gap='20px'>
                             <Box>
                                 <Text mb='8px'>First Name</Text>
-                                <Input type='text' autoComplete="off" w='full' placeholder='Enter first name' size='md' name='firstname' value={input.firstname} onChange={onInputChange} onBlur={validateInput} />
-                                {error.firstname && <Text as='span' color='red.500'>{error.firstname}</Text>}
+                                <Input type='text' autoComplete="off" w='full' placeholder='Enter first name' size='md' name='first_name' value={input.first_name} onChange={onInputChange} onBlur={validateInput} />
+                                {error.first_name && <Text as='span' color='red.500'>{error.first_name}</Text>}
                             </Box>
                             <Box>
                                 <Text mb='8px'>Last Name</Text>
-                                <Input type='text' autoComplete="off" w='full' placeholder='Enter last name' size='md' name='lastname' value={input.lastname} onChange={onInputChange} onBlur={validateInput} />
-                                {error.lastname && <Text as='span' color='red.500'>{error.lastname}</Text>}
+                                <Input type='text' autoComplete="off" w='full' placeholder='Enter last name' size='md' name='last_name' value={input.last_name} onChange={onInputChange} onBlur={validateInput} />
+                                {error.last_name && <Text as='span' color='red.500'>{error.last_name}</Text>}
                             </Box>
                             <Box>
                                 <Text mb='8px'>Email address</Text>
@@ -354,8 +352,8 @@ export function SignupComp() {
                         </VStack>
                         <Button
                             onClick={
-                                !input.firstname ||
-                                    !input.lastname ||
+                                !input.first_name ||
+                                    !input.last_name ||
                                     !country ||
                                     !input.email ||
                                     !input.password ||
@@ -364,24 +362,24 @@ export function SignupComp() {
                             px='74px'
                             w='fit-content'
                             bgGradient={
-                                !input.firstname ||
-                                !input.lastname ||
-                                !country ||
-                                !input.email ||
-                                !input.password ||
-                                !input.confirmPassword ? 'linear(to-b, brand.800, brand.800)' : 'linear(to-b, brand.200, brand.400)'}
+                                !input.first_name ||
+                                    !input.last_name ||
+                                    !country ||
+                                    !input.email ||
+                                    !input.password ||
+                                    !input.confirmPassword ? 'linear(to-b, brand.800, brand.800)' : 'linear(to-b, brand.200, brand.400)'}
                             color="white"
                             _hover={{ bg: 'brand.200', color: 'white' }}
                             cursor={
-                                !input.firstname ||
-                                !input.lastname ||
-                                !country ||
-                                !input.email ||
-                                !input.password ||
-                                !input.confirmPassword ? 'not-allowed' : 'pointer'}
+                                !input.first_name ||
+                                    !input.last_name ||
+                                    !country ||
+                                    !input.email ||
+                                    !input.password ||
+                                    !input.confirmPassword ? 'not-allowed' : 'pointer'}
                             disabled={
-                                !input.firstname ||
-                                !input.lastname ||
+                                !input.first_name ||
+                                !input.last_name ||
                                 !country ||
                                 !input.email ||
                                 !input.password ||
