@@ -118,7 +118,7 @@ export function SignupComp() {
     const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
     const toast = useToast();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [country, setCountry] = useState('');
 
     const registerEndpoint = import.meta.env.VITE_REGISTER_URL;
