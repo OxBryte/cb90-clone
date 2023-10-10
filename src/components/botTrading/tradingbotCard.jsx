@@ -1,8 +1,11 @@
-import { Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Stack, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import LineChartComponent from '../../pages/dashboard/line'
 
 export default function TradingbotCard({ botTitle }) {
+
+    const isDesktop = useBreakpointValue({ base: false, lg: true })
+
     return (
         <VStack w='full' gap='30px' bg='white' rounded='12px'>
             <HStack align='end' justify='space-between' w='full'>
@@ -30,42 +33,89 @@ export default function TradingbotCard({ botTitle }) {
                     </Popover>
                 </Box>
             </HStack>
-            <Stack direction={['column', 'row']} justify='space-between' w='full' p='30px' align='center'>
-                <VStack align='left' gap='20px'>
-                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
-                        <Image src='./closed.svg' alt='' />
-                        <VStack align='left'>
-                            <Text>Closed Trades</Text>
-                            <Text fontWeight={700}>5</Text>
+            <Stack direction={['column', 'row']} justify='space-between' gap='20px' w='full' p='30px' align='center'>
+                {isDesktop ? (
+                    <>
+                        <VStack align='left' gap='20px' w='full'>
+                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
+                                <Image src='./closed.svg' alt='' />
+                                <VStack align='left'>
+                                    <Text>Closed Trades</Text>
+                                    <Text fontWeight={700}>5</Text>
+                                </VStack>
+                            </HStack>
+                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
+                                <Image src='./open.svg' alt='' />
+                                <VStack align='left'>
+                                    <Text>Open Trades</Text>
+                                    <Text fontWeight={700}>2</Text>
+                                </VStack>
+                            </HStack>
                         </VStack>
-                    </HStack>
-                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
-                        <Image src='./open.svg' alt='' />
-                        <VStack align='left'>
-                            <Text>Open Trades</Text>
-                            <Text fontWeight={700}>2</Text>
+                        <VStack align='left' gap='20px' w='full'>
+                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
+                                <Image src='./chartup.svg' alt='' />
+                                <VStack align='left'>
+                                    <Text>Profits</Text>
+                                    <Text fontWeight={700}>$10,234.00</Text>
+                                </VStack>
+                            </HStack>
+                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
+                                <Image src='./chartdown.svg' alt='' />
+                                <VStack align='left'>
+                                    <Text>Loss</Text>
+                                    <Text fontWeight={700}>$2,566.01</Text>
+                                </VStack>
+                            </HStack>
                         </VStack>
-                    </HStack>
-                </VStack>
-                <VStack align='left' gap='20px'>
-                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
-                        <Image src='./chartup.svg' alt='' />
-                        <VStack align='left'>
-                            <Text>Profits</Text>
-                            <Text fontWeight={700}>$10,234.00</Text>
+                        <VStack align='left' gap='20px'>
+                            <LineChartComponent />
                         </VStack>
-                    </HStack>
-                    <HStack align='center' gap='20px' bg='white' boxShadow='md' rounded='12px' p='10px' w='280px'>
-                        <Image src='./chartdown.svg' alt='' />
-                        <VStack align='left'>
-                            <Text>Loss</Text>
-                            <Text fontWeight={700}>$2,566.01</Text>
+                    </>
+                ) : (
+                    <>
+                        <VStack w='full'>
+                            <Stack direction={['column', 'row']} w='full' justify='space-between'>
+                                <VStack align='left' gap='20px' w='full'>
+                                    <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                        <Image src='./closed.svg' alt='' />
+                                        <VStack align='left'>
+                                            <Text>Closed Trades</Text>
+                                            <Text fontWeight={700}>5</Text>
+                                        </VStack>
+                                    </HStack>
+                                    <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                        <Image src='./open.svg' alt='' />
+                                        <VStack align='left'>
+                                            <Text>Open Trades</Text>
+                                            <Text fontWeight={700}>2</Text>
+                                        </VStack>
+                                    </HStack>
+                                </VStack>
+                                <VStack align='left' gap='20px' w='full'>
+                                    <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                        <Image src='./chartup.svg' alt='' />
+                                        <VStack align='left'>
+                                            <Text>Profits</Text>
+                                            <Text fontWeight={700}>$10,234.00</Text>
+                                        </VStack>
+                                    </HStack>
+                                    <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                        <Image src='./chartdown.svg' alt='' />
+                                        <VStack align='left'>
+                                            <Text>Loss</Text>
+                                            <Text fontWeight={700}>$2,566.01</Text>
+                                        </VStack>
+                                    </HStack>
+                                </VStack>
+                            </Stack>
+                            <VStack align='left' gap='20px'>
+                                <LineChartComponent />
+                            </VStack>
                         </VStack>
-                    </HStack>
-                </VStack>
-                <VStack align='left' gap='20px'>
-                    <LineChartComponent />
-                </VStack>
+                    </>
+
+                )}
             </Stack>
         </VStack>
     )
