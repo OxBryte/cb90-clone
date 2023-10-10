@@ -1,6 +1,12 @@
 import { Grid, GridItem, Heading, Input, Flex, Text, VStack, Box, Divider, Stack, HStack, Button } from '@chakra-ui/react'
+import { selectUser } from '../../redux/userSlice';
+import { useSelector } from 'react-redux';
+import moment from 'moment/moment';
 
 export default function Profile() {
+
+    const user = useSelector(selectUser);
+
     return (
         <VStack align='left' w='full'>
             <Box as='form' >
@@ -14,13 +20,13 @@ export default function Profile() {
                         <GridItem colSpan={2}>
                             <Flex flexDir='column' gap={2}>
                                 <Text>First Name</Text>
-                                <Input placeholder='Enter first name' type='text' />
+                                <Input placeholder={`${user.user.first_name}`} type='text' />
                             </Flex>
                         </GridItem>
                         <GridItem colSpan={2}>
                             <Flex flexDir='column' gap={2}>
                                 <Text>Last Name</Text>
-                                <Input placeholder='Enter last name' type='text' />
+                                <Input placeholder={`${user.user.last_name}`} type='text' />
                             </Flex>
                         </GridItem>
                         <GridItem colSpan={2}>
@@ -46,7 +52,7 @@ export default function Profile() {
                         <GridItem colSpan={2}>
                             <Flex flexDir='column' gap={2}>
                                 <Text>Email Address</Text>
-                                <Input placeholder='Enter email address' type='text' />
+                                <Input placeholder={`${user.user.email}`} type='text' />
                             </Flex>
                         </GridItem>
                         <GridItem colSpan={2}>
@@ -58,7 +64,7 @@ export default function Profile() {
                         <GridItem colSpan={2}>
                             <Flex flexDir='column' gap={2}>
                                 <Text>Location</Text>
-                                <Input placeholder='United States' type='text' />
+                                <Input placeholder={`${user.user.country}`} type='text' />
                             </Flex>
                         </GridItem>
                         <GridItem colSpan={2}>
@@ -70,7 +76,7 @@ export default function Profile() {
                     </Grid>
                     <Divider />
                     <Stack direction={['column', 'row']} justify='space-between' align='center'>
-                        <Text>This account was created on January 10, 2023, 02:12 PM</Text>
+                        <Text>This account was created on {`${moment(user.user.created_at).format('LLLL')}`}</Text>
                         <HStack>
                             <Button variant='solid' border='1px' borderColor='brand.300' px='26px' bg='none' _hover={{ bg: 'brand.200' }} w='fit-content'>Cancel</Button>
                             <Button variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>
