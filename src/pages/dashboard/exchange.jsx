@@ -1,10 +1,14 @@
-import { Box, Button, Divider, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Divider, HStack, Heading, Image, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 
 export default function Exchange() {
+
+    const isDesktop = useBreakpointValue({ base: false, lg: true })
+
+    
     return (
-        <VStack w='full' gap='50px'>
+        <VStack h='full' w='full' gap='50px'>
             <VStack w='full' rounded='16px' bg='white' align='left' p='20px' gap='12px'>
-                <Heading>Connected Exchange Accounts</Heading>
+                <Heading fontSize={isDesktop ? '34px' : '22px'}>Connected Exchange Accounts</Heading>
                 <Text>Effortlessly manage your cryptocurrency exchange accounts and trade with ease using our integrated exchange hub.</Text>
             </VStack>
             <VStack p='30px' rounded='16px' gap='20px' w='full' bg='white'>
