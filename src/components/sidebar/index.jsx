@@ -7,7 +7,7 @@ import { IoHeadsetOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
 
-const SidebarData = [
+export const SidebarData = [
     {
         title: 'Overview',
         icon: <RxDashboard />,
@@ -46,7 +46,7 @@ const SidebarData = [
     },
 ]
 
-const SidebarData2 = [
+export const SidebarData2 = [
     {
         title: 'Support',
         icon: <IoHeadsetOutline />,
@@ -66,14 +66,14 @@ export default function Sidebar() {
     const { id } = useParams()
 
     return (
-        <VStack justify='space-between' align='left' bg='brand.500' color='white' fontWeight='600' pl='70px' py='50px' h='100vh' position='sticky' top='0'>
-            <VStack gap='50px' w='full' align='left'>
-                <Box>
+        <VStack justify='space-between' align='right' bg='brand.500' color='white' fontWeight='600' pl='50px' py='50px' h='100vh' position='sticky' top='0'>
+            <VStack gap='50px' w='full'>
+                <HStack w='full' align='left'>
                     <Link to='/'>
                         <Image src='./cb90_logo_white.svg' w='120px' alt='CB90-PRO Logo' />
                     </Link>
-                </Box>
-                <UnorderedList m='0' listStyleType='none' spacing='10px'>
+                </HStack>
+                <UnorderedList m='0' listStyleType='none' spacing='10px' w='full'>
                     {SidebarData.map((item, i) => {
                         return (
                             <NavLink to={item.link} key={i}>
