@@ -31,7 +31,7 @@ const DashboardLayout = ({ children, sidebar = true, dashboardNav = true }) => {
                 <>
                     <Box bg='brand.900'>
                         {dashboardNav && <DashboardNavbar />}
-                        <Box m='30px'>
+                        <Box p='30px'>
                             {children}
                         </Box>
                     </Box>
