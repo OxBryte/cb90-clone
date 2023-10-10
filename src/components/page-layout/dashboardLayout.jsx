@@ -1,8 +1,16 @@
 import { Box, Grid, GridItem } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 import Sidebar from '../sidebar';
 import DashboardNavbar from '../navbar/dashboardNavbar';
 
 const DashboardLayout = ({ children, sidebar = true, dashboardNav = true }) => {
+
+    DashboardLayout.propTypes = {
+        children: PropTypes.node.isRequired,
+        sidebar: PropTypes.bool,
+        dashboardNav: PropTypes.bool
+    };
+
     return (
         <Grid templateColumns='repeat(5, 1fr)' gap={0}>
             <GridItem colSpan={1}>
