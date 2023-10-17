@@ -13,7 +13,7 @@ export default function Overview() {
             <VStack w='full' gap='34px'>
                 <SimpleGrid w='full' columns={[1, 1, 3, 3]} justify='space-between' alignItems='center' gap='30px'>
                     <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
-                        <Box p='10px' bg='brand.300'>
+                        <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
@@ -22,7 +22,7 @@ export default function Overview() {
                         </VStack>
                     </VStack>
                     <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
-                        <Box p='10px' bg='brand.300'>
+                        <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
@@ -31,7 +31,7 @@ export default function Overview() {
                         </VStack>
                     </VStack>
                     <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
-                        <Box p='10px' bg='brand.300'>
+                        <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
