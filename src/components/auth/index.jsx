@@ -39,11 +39,11 @@ export function LoginComp() {
                         isClosable: true,
                     });
 
-                    localStorage.setItem("token", res.data.token);
-                    dispatch(setToken(res.data.token));
-
-                    setIsLoading(false)
-                    dispatch(setUser(res.data));
+                    const { token, ...userData } = res.data;
+                    localStorage.setItem("token", token);
+                    dispatch(setToken(token));
+                    setIsLoading(false);
+                    dispatch(setUser(userData));
                     navigate("/dashboard");
 
                     // const token = localStorage.getItem("token");

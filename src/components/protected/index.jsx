@@ -2,15 +2,12 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { selectToken } from '../../redux/userSlice';
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute({ children, redirectComponent = <Navigate to="/login" /> }) {
     const token = useSelector(selectToken);
 
     if (!token) {
-        return (
-            <Navigate to="/login" />
-        );
+        return redirectComponent;
     }
-
     return children
 }
 

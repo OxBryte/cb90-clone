@@ -2,11 +2,33 @@ import { Box, Flex, HStack, Heading, Popover, PopoverContent, PopoverTrigger, Si
 import { PiCurrencyCircleDollar } from 'react-icons/pi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import LineChartComponent from './line';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser, setToken, setUser } from '../../redux/userSlice';
+import fetchUserDataFromServer from '../../redux/auth';
+import { useEffect } from 'react';
+import moment from 'moment';
 
 
 export default function Overview() {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
+
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser);
+    // console.log(user)
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                dispatch(setToken(token));
+                const userData = await fetchUserDataFromServer(token);
+                dispatch(setUser(userData));
+            }
+        };
+
+        fetchUserData();
+    }, [dispatch]);
 
     return (
         <>
@@ -17,7 +39,7 @@ export default function Overview() {
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>$4,243.00</Heading>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>${user.data.profit}</Heading>
                             <Text>Profit/Loss</Text>
                         </VStack>
                     </VStack>
@@ -35,10 +57,19 @@ export default function Overview() {
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>10</Heading>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{user.data.trading_days}</Heading>
                             <Text>Bot Trading Days</Text>
                         </VStack>
                     </VStack>
+                    {/* <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
+                        <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
+                            <PiCurrencyCircleDollar size={30} />
+                        </Box>
+                        <VStack align='left' gap='16px'>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{user.data.total_trades}</Heading>
+                            <Text>Total Trades</Text>
+                        </VStack>
+                    </VStack> */}
                 </SimpleGrid>
                 <SimpleGrid w='full' bg='white' p='30px' columns={[2, 2, 2, 4]} justify='space-between' rounded='12px' alignItems='center' gap={['20px','50px']}>
                     <VStack align='center' gap='20px' >
@@ -51,7 +82,7 @@ export default function Overview() {
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
                             <Text>Balance</Text>
                         </Flex>
-                        <Text fontWeight={700}>$10,000</Text>
+                        <Text fontWeight={700}>${user.data.spot_balance}</Text>
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
@@ -63,7 +94,7 @@ export default function Overview() {
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
                             <Text>Last Login</Text>
                         </Flex>
-                        <Text fontWeight={700}>20th Aug, 2023</Text>
+                        <Text fontWeight={700}>{`${moment(user.data.last_login).calendar()}`}</Text>
                     </VStack>
                 </SimpleGrid>
                 <VStack w='full' bg='white' p='30px' justify='space-between' rounded='12px' align='left' gap='20px'>

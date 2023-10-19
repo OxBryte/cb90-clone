@@ -20,7 +20,7 @@ function App() {
     if (token) {
       dispatch(setToken(token));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -34,7 +34,7 @@ function App() {
           <Route path="/recover" element={<ForgottenPassword />} />
           <Route path="/:id" element={
             <>
-              <ProtectedRoute>
+              <ProtectedRoute redirectComponent={<Login />}>
                 <Dashboard />
               </ProtectedRoute>
             </>

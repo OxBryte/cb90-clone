@@ -35,7 +35,7 @@ export const Carousel = () => {
         }, 2000); // Change slide every 2 seconds
 
         return () => clearInterval(timer); // Clean up the interval when component unmounts
-    }, [activeIndex, items.length]);
+    }, [activeIndex, items.length, updateIndex]);
 
     return (
         <VStack gap='40px' align='left' w='full' overflow='hidden' justify='center' >
