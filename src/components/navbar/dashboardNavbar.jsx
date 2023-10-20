@@ -1,13 +1,11 @@
 import { Avatar, Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Text, VStack, useBreakpointValue, useDisclosure, Drawer, DrawerBody, DrawerContent, DrawerOverlay, DrawerHeader, DrawerCloseButton, UnorderedList, ListItem } from '@chakra-ui/react'
 import { FiBell, FiUser } from 'react-icons/fi'
 import { TbLogout2 } from 'react-icons/tb'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
-import { selectUser, setToken, setUser } from '../../redux/userSlice';
+import { selectUser } from '../../redux/userSlice';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SidebarData, SidebarData2 } from '../sidebar';
-import fetchUserDataFromServer from '../../redux/auth';
-import { useEffect } from 'react';
 
 export default function DashboardNavbar() {
 
@@ -17,23 +15,8 @@ export default function DashboardNavbar() {
   const location = useLocation();
   const { pathname } = location;
   const { id } = useParams()
-
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  // console.log(user.data.user);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        dispatch(setToken(token));
-        const userData = await fetchUserDataFromServer(token);
-        dispatch(setUser(userData));
-      }
-    };
-
-    fetchUserData();
-  }, [dispatch]);
+  
 
   return (
     <HStack bg='white' justify='space-between' align='center' px={['10px', '30px']} py='16px' w='full' boxShadow='sm' m='0'>
@@ -48,9 +31,9 @@ export default function DashboardNavbar() {
         {isDesktop ? (
           <Popover trigger='hover' placement='bottom-end' >
             <PopoverTrigger>
-              <Flex items='center' gap='10px'>
-                <Text>
-                  {user.data.user.first_name}
+              <Flex align='center' gap='10px'>
+                <Text font>
+                  {user.user.first_name}
                 </Text>
                 <Avatar size='sm' name='Christian Nwamba' src='https://bit.ly/code-beast' />
               </Flex>
