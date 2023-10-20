@@ -16,6 +16,8 @@ export default function DashboardNavbar() {
   const { pathname } = location;
   const { id } = useParams()
   const user = useSelector(selectUser);
+
+  const firstName = user?.user?.first_name || '';
   
 
   return (
@@ -32,8 +34,8 @@ export default function DashboardNavbar() {
           <Popover trigger='hover' placement='bottom-end' >
             <PopoverTrigger>
               <Flex align='center' gap='10px'>
-                <Text font>
-                  {user.user.first_name}
+                <Text fontWeight='600'>
+                  {firstName}
                 </Text>
                 <Avatar size='sm' name='Christian Nwamba' src='https://bit.ly/code-beast' />
               </Flex>

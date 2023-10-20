@@ -12,6 +12,12 @@ export default function Overview() {
     const isDesktop = useBreakpointValue({ base: false, lg: true })
     const user = useSelector(selectUser);
 
+    const profit = user?.profit || 0;
+    const tradingDays = user.trading_days || 0;
+    const totalTrades = user.total_trades || 0;
+    const spotBalance = user.spot_balance || 0;
+    const lastLogin = user.last_login || '';
+
     return (
         <>
             <VStack w='full' gap='34px'>
@@ -21,7 +27,7 @@ export default function Overview() {
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>${user.profit}</Heading>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>${profit}</Heading>
                             <Text>Profit/Loss</Text>
                         </VStack>
                     </VStack>
@@ -39,7 +45,7 @@ export default function Overview() {
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{user.trading_days}</Heading>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{tradingDays}</Heading>
                             <Text>Bot Trading Days</Text>
                         </VStack>
                     </VStack>
@@ -48,7 +54,7 @@ export default function Overview() {
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{user.total_trades}</Heading>
+                            <Heading fontSize={isDesktop ? '34px' : '24px'}>{totalTrades}</Heading>
                             <Text>Total Trades</Text>
                         </VStack>
                     </VStack>
@@ -64,7 +70,7 @@ export default function Overview() {
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
                             <Text>Balance</Text>
                         </Flex>
-                        <Text fontWeight={700}>${user.spot_balance}</Text>
+                        <Text fontWeight={700}>${spotBalance}</Text>
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
@@ -76,7 +82,7 @@ export default function Overview() {
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
                             <Text>Last Login</Text>
                         </Flex>
-                        <Text fontWeight={700}>{`${moment(user.last_login).calendar()}`}</Text>
+                        <Text fontWeight={700}>{`${moment(lastLogin).calendar()}`}</Text>
                     </VStack>
                 </SimpleGrid>
                 <VStack w='full' bg='white' p='30px' justify='space-between' rounded='12px' align='left' gap='20px'>
