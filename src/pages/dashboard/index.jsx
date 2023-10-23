@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import DashboardLayout from '../../components/page-layout/dashboardLayout'
 import Overview from './overview'
-import { Text } from '@chakra-ui/react';
+import { Spinner, Text } from '@chakra-ui/react';
 import TradingBot from './tradingBot';
 import Alerts from './alerts';
 import Exchange from './exchange';
