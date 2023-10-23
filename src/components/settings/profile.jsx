@@ -21,7 +21,6 @@ export default function Profile() {
     const [currency, setCurrency] = useState('US Dollar ($)'); 
 
     const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-    
     const token = useSelector(state => state.token);
     
     const handleSubmit = async () => {
@@ -48,6 +47,7 @@ export default function Profile() {
             });
 
             const data = await response.json();
+            console.log(data);
 
         } catch (error) {
             console.error('Error updating profile:', error);
