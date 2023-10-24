@@ -18,7 +18,7 @@ export default function DashboardNavbar() {
   const user = useSelector(selectUser);
 
   const firstName = user?.user?.first_name || '';
-  
+
 
   return (
     <HStack bg='white' justify='space-between' align='center' px={['10px', '30px']} py='16px' w='full' boxShadow='sm' m='0'>
@@ -42,10 +42,12 @@ export default function DashboardNavbar() {
             </PopoverTrigger>
             <PopoverContent w='fit-contnet'>
               <VStack bg='white' rounded='12px' gap='0'>
-                <Flex cursor='pointer' align='center' w='full' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
-                  <FiUser />
-                  My Profile
-                </Flex>
+                <Link to='/settings'>
+                  <Flex cursor='pointer' align='center' w='full' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
+                    <FiUser />
+                    My Profile
+                  </Flex>
+                </Link>
                 <Flex cursor='pointer' color='red.400' align='center' w='full' p='15px' rounded='12px' _hover={{ bg: 'brand.300', rounded: 'none' }} gap='12px'>
                   <TbLogout2 />
                   Logout

@@ -11,33 +11,27 @@ export default function Overview() {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
     const user = useSelector(selectUser);
+    console.log(user);
 
     const profit = user?.profit || 0;
     const tradingDays = user.trading_days || 0;
     const totalTrades = user.total_trades || 0;
     const spotBalance = user.spot_balance || 0;
+    const accountStatus = user.account_status || '';
+    const activeBot = user.active_bots || 0;
     const lastLogin = user.last_login || '';
 
     return (
         <>
             <VStack w='full' gap='34px'>
-                <SimpleGrid w='full' columns={[1, 1, 2, 4]} justify='space-between' alignItems='center' gap='20px'>
+                <SimpleGrid w='full' columns={[1, 1, 2, 3]} justify='space-between' alignItems='center' gap='20px'>
                     <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
                         <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
                             <PiCurrencyCircleDollar size={30} />
                         </Box>
                         <VStack align='left' gap='16px'>
                             <Heading fontSize={isDesktop ? '34px' : '24px'}>${profit}</Heading>
-                            <Text>Profit/Loss</Text>
-                        </VStack>
-                    </VStack>
-                    <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
-                        <Box p='10px' bg='brand.300' w='fit-content' rounded='14px'>
-                            <PiCurrencyCircleDollar size={30} />
-                        </Box>
-                        <VStack align='left' gap='16px'>
-                            <Heading fontSize={isDesktop ? '34px' : '24px'}>$4,000.00</Heading>
-                            <Text>Withdrawn</Text>
+                            <Text>Profit</Text>
                         </VStack>
                     </VStack>
                     <VStack h={['auto','180px']} align='left' bg='white' rounded='20px' justify='space-between' px='25px' py='30px'>
@@ -62,9 +56,9 @@ export default function Overview() {
                 <SimpleGrid w='full' bg='white' p='30px' columns={[2, 2, 2, 4]} justify='space-between' rounded='12px' alignItems='center' gap={['20px','50px']}>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
-                            <Text>Login Times</Text>
+                            <Text>Active Bot</Text>
                         </Flex>
-                        <Text fontWeight={700}>000001</Text>
+                        <Text fontWeight={700}>{activeBot}</Text>
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
@@ -74,9 +68,9 @@ export default function Overview() {
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
-                            <Text>Funded Plan</Text>
+                            <Text>Account Status</Text>
                         </Flex>
-                        <Text fontWeight={700}>Starter</Text>
+                        <Text fontWeight={700}>{accountStatus}</Text>
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>

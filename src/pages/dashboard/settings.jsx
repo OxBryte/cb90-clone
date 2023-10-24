@@ -2,7 +2,6 @@ import { Box, Divider, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@
 import Profile from '../../components/settings/profile'
 import Security from '../../components/settings/security'
 import Notification from '../../components/settings/notification'
-import Subscription from '../../components/settings/subscription'
 
 export default function Settings() {
     return (
@@ -13,7 +12,6 @@ export default function Settings() {
                         <TabList>
                             <Tab _selected={{ bg: '#E6F8F8' }}>Profile</Tab>
                             <Tab _selected={{ bg: '#E6F8F8' }}>Security</Tab>
-                            <Tab _selected={{ bg: '#E6F8F8' }}>Subscription</Tab>
                             <Tab _selected={{ bg: '#E6F8F8' }}>Notification</Tab>
                         </TabList>
                         <Divider my='20px' />
@@ -23,9 +21,6 @@ export default function Settings() {
                             </TabPanel>
                             <TabPanel>
                                 <Security />
-                            </TabPanel>
-                            <TabPanel>
-                                <Subscription />
                             </TabPanel>
                             <TabPanel>
                                 <Notification />

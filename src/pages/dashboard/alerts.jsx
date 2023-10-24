@@ -102,9 +102,9 @@ export default function Alerts() {
                     )}
                 </Box>
             </VStack>
-            <VStack bg='white' w='full' minH='400px' p='30px' rounded='16px' align='center' justify='center'>
+            {/* <VStack bg='white' w='full' minH='400px' p='30px' rounded='16px' align='center' justify='center'>
                 <Text>A promotional banner goes here</Text>
-            </VStack>
+            </VStack> */}
         </VStack>
     )
 }

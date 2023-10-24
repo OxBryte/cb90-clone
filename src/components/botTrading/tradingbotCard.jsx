@@ -52,22 +52,7 @@ export default function TradingbotCard({ botTitle }) {
                                 </VStack>
                             </HStack>
                         </VStack>
-                        <VStack align='left' gap='20px' w='full'>
-                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
-                                <Image src='./chartup.svg' alt='' />
-                                <VStack align='left'>
-                                    <Text>Profits</Text>
-                                    <Text fontWeight={700}>$10,234.00</Text>
-                                </VStack>
-                            </HStack>
-                            <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' minW='200px'>
-                                <Image src='./chartdown.svg' alt='' />
-                                <VStack align='left'>
-                                    <Text>Loss</Text>
-                                    <Text fontWeight={700}>$2,566.01</Text>
-                                </VStack>
-                            </HStack>
-                        </VStack>
+                        
                         <VStack align='left' gap='20px'>
                             <LineChartComponent />
                         </VStack>
