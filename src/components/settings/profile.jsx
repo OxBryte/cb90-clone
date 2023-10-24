@@ -9,7 +9,6 @@ export default function Profile() {
     const user = useSelector(selectUser);
 
     const ID = user?.user?.id || '';
-    console.log(ID);
 
     const [firstName, setFirstName] = useState(user?.user?.first_name || '');
     const [lastName, setLastName] = useState(user?.user?.last_name || '');
@@ -50,7 +49,7 @@ export default function Profile() {
             console.log(data);
 
         } catch (error) {
-            console.error('Error updating profile:', error);
+            console.error('Error updating profile:');
         }
     };
 
