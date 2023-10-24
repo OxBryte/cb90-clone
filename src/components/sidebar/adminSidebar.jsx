@@ -1,10 +1,10 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
 import { FiCpu } from 'react-icons/fi'
-import { PiNotification } from 'react-icons/pi'
 import { RxDashboard } from 'react-icons/rx'
-import { IoHeadsetOutline } from 'react-icons/io5'
+import { IoHeadsetOutline, IoNotificationsOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
+import { HiOutlineUsers } from 'react-icons/hi2'
 
 export const AdminSidebarData = [
     {
@@ -15,7 +15,7 @@ export const AdminSidebarData = [
     },
     {
         title: 'Users',
-        icon: <FiCpu />,
+        icon: <HiOutlineUsers />,
         link: '/admin/users',
         id: 'users'
     },
@@ -27,7 +27,7 @@ export const AdminSidebarData = [
     },
     {
         title: 'Alerts',
-        icon: <PiNotification />,
+        icon: <IoNotificationsOutline />,
         link: '/admin/alerts',
         id: 'alerts'
     },
