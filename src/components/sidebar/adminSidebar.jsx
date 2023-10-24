@@ -1,56 +1,43 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
-import { FiSettings, FiCpu } from 'react-icons/fi'
-import { PiNotification, PiTrendUpFill } from 'react-icons/pi'
-import { RiExchangeFundsFill } from 'react-icons/ri'
+import { FiCpu } from 'react-icons/fi'
+import { PiNotification } from 'react-icons/pi'
 import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
 
-export const SidebarData = [
+export const AdminSidebarData = [
     {
         title: 'Overview',
         icon: <RxDashboard />,
-        link: '/dashboard',
+        link: '/admin/dashboard',
         id: 'dashboard'
+    },
+    {
+        title: 'Users',
+        icon: <FiCpu />,
+        link: '/admin/users',
+        id: 'users'
     },
     {
         title: 'Trading Bots',
         icon: <FiCpu />,
-        link: '/tradingbot',
+        link: '/admin/tradingbot',
         id: 'tradingbot'
     },
     {
         title: 'Alerts',
         icon: <PiNotification />,
-        link: '/alerts',
+        link: '/admin/alerts',
         id: 'alerts'
-    },
-    {
-        title: 'Market trends ',
-        icon: <PiTrendUpFill />,
-        link: '/market-trend',
-        id: 'market-trend'
-    },
-    {
-        title: 'Exchanges',
-        icon: <RiExchangeFundsFill />,
-        link: '/exchange',
-        id: 'exchange'
-    },
-    {
-        title: 'Settings',
-        icon: <FiSettings />,
-        link: '/settings',
-        id: 'settings'
     },
 ]
 
-export const SidebarData2 = [
+export const AdminSidebarData2 = [
     {
-        title: 'Support',
+        title: 'User panel',
         icon: <IoHeadsetOutline />,
-        link: '/support',
+        link: '/admin/user-panel',
         id: 'support'
     },
     {
@@ -61,7 +48,7 @@ export const SidebarData2 = [
     },
 ]
 
-export default function Sidebar() {
+export default function AdminSidebar() {
 
     const { id } = useParams()
 
@@ -74,13 +61,13 @@ export default function Sidebar() {
                     </Link>
                 </HStack>
                 <UnorderedList m='0' listStyleType='none' spacing='10px' w='full'>
-                    {SidebarData.map((item, i) => {
+                    {AdminSidebarData.map((admin, i) => {
                         return (
-                            <NavLink to={item.link} key={i}>
-                                <ListItem my='10px' p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
+                            <NavLink to={admin.link} key={i}>
+                                <ListItem my='10px' p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === admin.id && 'brand.900'} color={id === admin.id ? 'brand.100' : ''}>
                                     <HStack>
-                                        {item.icon}
-                                        <Box>{item.title}</Box>
+                                        {admin.icon}
+                                        <Box>{admin.title}</Box>
                                     </HStack>
                                 </ListItem>
                             </NavLink>
@@ -89,13 +76,13 @@ export default function Sidebar() {
                 </UnorderedList>
             </VStack>
             <UnorderedList m='0' listStyleType='none' spacing='10px' justifyContent='end'>
-                {SidebarData2.map((item, idx) => {
+                {AdminSidebarData2.map((admin, idx) => {
                     return (
-                        <NavLink to={item.link} key={idx}>
-                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
-                                <HStack color={item.title === 'Logout' && 'red.400'}>
-                                    {item.icon}
-                                    <Box>{item.title}</Box>
+                        <NavLink to={admin.link} key={idx}>
+                            <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === admin.id && 'brand.900'} color={id === admin.id ? 'brand.100' : ''}>
+                                <HStack color={admin.title === 'Logout' && 'red.400'}>
+                                    {admin.icon}
+                                    <Box>{admin.title}</Box>
                                 </HStack>
                             </ListItem>
                         </NavLink>

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import Home from "./pages/home"
 import Faqs from "./pages/faqs"
@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard"
 import { setToken } from "./redux/userSlice"
 import { useEffect } from "react"
 import ProtectedRoute from './components/protected'
+import Admin from './pages/admin'
 // import TradingBot from "./pages/tradingbot"
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
                 <Dashboard />
               </ProtectedRoute>
             </>
+          } />
+          <Route path="/admin/:id" element={
+                <Admin />
           } />
           {/* <Route path="/tradingbot" element={<TradingBot />} /> */}
         </Routes>
