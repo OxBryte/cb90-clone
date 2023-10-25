@@ -11,7 +11,6 @@ export default function Overview() {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
     const user = useSelector(selectUser);
-    console.log(user);
 
     const profit = user?.profit || 0;
     const tradingDays = user.trading_days || 0;

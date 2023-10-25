@@ -12,17 +12,19 @@ export default function Profile() {
 
     const ID = user?.user?.id || '';
 
-    const [firstName, setFirstName] = useState(user?.user?.first_name || '');
-    const [lastName, setLastName] = useState(user?.user?.last_name || '');
-    const [email, setEmail] = useState(user?.user?.email || '');
+    const [loading, setLoading] = useState(false)
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [location, setLocation] = useState(user?.user?.country || '');
+    const [location, setLocation] = useState('');
 
     const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
     const token = useSelector(selectToken);
 
 
     const handleSubmit = async () => {
+        setLoading(true)
         const payload = {
             first_name: firstName,
             last_name: lastName,
@@ -40,6 +42,7 @@ export default function Profile() {
                 // body: JSON.stringify(payload)
             });
 
+            setLoading(false)
             if (response.data?.status) {
                 const successMessage = response.data?.message;
                 toast({
@@ -48,6 +51,12 @@ export default function Profile() {
                     duration: 3000,
                     isClosable: true,
                 });
+
+                setFirstName('')
+                setLastName('')
+                setLocation('')
+                setPhoneNumber('')
+
             } else {
                 const errorMessage = response.data?.message || 'Error updating profile';
                 toast({
@@ -123,7 +132,7 @@ export default function Profile() {
                         <Text>This account was created on {`${moment(user?.user?.created_at).format('LLLL')}`}</Text>
                         <HStack>
                             <Button variant='solid' border='1px' borderColor='brand.300' px='26px' bg='none' _hover={{ bg: 'brand.200' }} w='fit-content'>Cancel</Button>
-                            <Button onClick={handleSubmit} isDisabled={!phoneNumber || !firstName || !lastName} variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>
+                            <Button onClick={handleSubmit} isLoading={loading} isDisabled={!phoneNumber || !firstName || !lastName} variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>
                         </HStack>
                     </Stack>
                 </VStack>

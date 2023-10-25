@@ -6,6 +6,7 @@ import { selectToken } from '../../redux/userSlice';
 
 export default function Security() {
 
+    const [loading, setLoading] = useState(false)
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [reenteredPassword, setReenteredPassword] = useState('');
@@ -24,6 +25,8 @@ export default function Security() {
             });
             return;
         }
+
+        setLoading(true)
         const payload = {
             old_password: oldPassword,
             new_password: newPassword
@@ -38,6 +41,7 @@ export default function Security() {
                 // body: JSON.stringify(payload)
             });
 
+            setLoading(false)
             if (response.data?.status) {
                 const successMessage = response.data?.message;
                 toast({
@@ -98,7 +102,7 @@ export default function Security() {
                     <Stack direction={['column', 'row']} justify='space-between' align='center'>
                         <Text>To ensure your account is well protected, please use 8 or more characters with a mix of letters, numbers & symbols.</Text>
                         <HStack>
-                            <Button onClick={handleChangePassword} isDisabled={!oldPassword || !newPassword || !reenteredPassword} variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>
+                            <Button onClick={handleChangePassword} isLoading={loading} isDisabled={!oldPassword || !newPassword || !reenteredPassword} variant='solid' px='26px' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} w='fit-content'>Save Changes</Button>
                         </HStack>
                     </Stack>
                 </VStack>
