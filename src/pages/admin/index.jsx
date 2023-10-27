@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/userSlice';
 import AdminLayout from '../../components/page-layout/adminLayout';
 import AdminOverview from './overview';
-import AllUsers from './allUsers';
 
 export default function Admin() {
     const { id } = useParams();
@@ -15,9 +14,7 @@ export default function Admin() {
             {
                 id === 'dashboard' ? (
                     <AdminOverview />
-                ) : id === 'users' ? (
-                    <AllUsers />
-                ) : (
+                ) :  (
                     <Text w='full' display='flex' justifyContent='center'>Coming Soon... 👷‍♂️</Text>
                 )
             }

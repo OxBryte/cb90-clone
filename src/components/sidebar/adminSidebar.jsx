@@ -4,7 +4,6 @@ import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline, IoNotificationsOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
-import { HiOutlineUsers } from 'react-icons/hi2'
 
 export const AdminSidebarData = [
     {
@@ -12,12 +11,6 @@ export const AdminSidebarData = [
         icon: <RxDashboard />,
         link: '/admin/dashboard',
         id: 'dashboard'
-    },
-    {
-        title: 'Users',
-        icon: <HiOutlineUsers />,
-        link: '/admin/users',
-        id: 'users'
     },
     {
         title: 'Trading Bots',
