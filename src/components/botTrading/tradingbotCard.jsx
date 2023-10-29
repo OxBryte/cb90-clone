@@ -54,6 +54,22 @@ export default function TradingbotCard({ botTitle, item }) {
                                     </VStack>
                                 </HStack>
                             </VStack>
+                            <VStack align='left' gap='20px' w='full'>
+                                <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='240px'>
+                                    <Image src='./closed.svg' alt='' />
+                                    <VStack align='left'>
+                                        <Text>Closed Trades</Text>
+                                        <Text fontWeight={700}>{item.closed_trades}</Text>
+                                    </VStack>
+                                </HStack>
+                                <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='240px'>
+                                    <Image src='./open.svg' alt='' />
+                                    <VStack align='left'>
+                                        <Text>Open Trades</Text>
+                                        <Text fontWeight={700}>{item.open_trades}</Text>
+                                    </VStack>
+                                </HStack>
+                            </VStack>
 
                             <VStack align='left' gap='20px'>
                                 <LineChartComponent />
@@ -63,6 +79,22 @@ export default function TradingbotCard({ botTitle, item }) {
                         <>
                             <VStack w='full'>
                                 <Stack direction={['column', 'row']} w='full' justify='space-between'>
+                                    <VStack align='left' gap='20px' w='full'>
+                                        <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                            <Image src='./closed.svg' alt='' />
+                                            <VStack align='left'>
+                                                <Text>Closed Trades</Text>
+                                                <Text fontWeight={700}>{item.closed_trades}</Text>
+                                            </VStack>
+                                        </HStack>
+                                        <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
+                                            <Image src='./open.svg' alt='' />
+                                            <VStack align='left'>
+                                                <Text>Open Trades</Text>
+                                                <Text fontWeight={700}>{item.open_trades}</Text>
+                                            </VStack>
+                                        </HStack>
+                                    </VStack>
                                     <VStack align='left' gap='20px' w='full'>
                                         <HStack align='center' gap='20px' bg='white' boxShadow='base' rounded='12px' p='10px' w='full'>
                                             <Image src='./closed.svg' alt='' />

@@ -128,7 +128,7 @@ export default function Profile() {
                         </GridItem>
                     </Grid>
                     <Divider />
-                    <Stack direction={['column', 'row']} justify='space-between' align='center'>
+                    <Stack direction={['column', 'column', 'row']} justify='space-between' align={['left', 'left', 'center']}>
                         <Text>This account was created on {`${moment(user?.user?.created_at).format('LLLL')}`}</Text>
                         <HStack>
                             <Button variant='solid' border='1px' borderColor='brand.300' px='26px' bg='none' _hover={{ bg: 'brand.200' }} w='fit-content'>Cancel</Button>

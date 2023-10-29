@@ -1,6 +1,6 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
 import { FiSettings, FiCpu } from 'react-icons/fi'
-import { PiNotification, PiTrendUpFill } from 'react-icons/pi'
+import { PiTrendUpFill } from 'react-icons/pi'
 import { RiExchangeFundsFill } from 'react-icons/ri'
 import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline } from 'react-icons/io5'
@@ -20,12 +20,12 @@ export const SidebarData = [
         link: '/tradingbot',
         id: 'tradingbot'
     },
-    {
-        title: 'Alerts',
-        icon: <PiNotification />,
-        link: '/alerts',
-        id: 'alerts'
-    },
+    // {
+    //     title: 'Alerts',
+    //     icon: <PiNotification />,
+    //     link: '/alerts',
+    //     id: 'alerts'
+    // },
     {
         title: 'Market trends ',
         icon: <PiTrendUpFill />,

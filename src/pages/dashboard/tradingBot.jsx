@@ -29,6 +29,7 @@ export default function TradingBot() {
             } catch (err) {
                 setError(err);
                 setLoading(false);
+                console.log(error);
             }
         };
 

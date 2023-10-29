@@ -16,7 +16,7 @@ export default function Notification() {
                             <Image src='./google.svg' alt='' />
                             <VStack align='left' gap='0'>
                                 <Text fontSize='22px' fontWeight='600'>Email Notification</Text>
-                                <Text color='#4e4e4e'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique.</Text>
+                                <Text color='#4e4e4e'>Receive email notifications for important updates and messages related to your account.</Text>
                             </VStack>
                         </HStack>
                         <HStack gap='30px'>
@@ -28,7 +28,7 @@ export default function Notification() {
                             <Image src='./google.svg' alt='' />
                             <VStack align='left' gap='0'>
                                 <Text fontSize='22px' fontWeight='600'>Device Login Alerts</Text>
-                                <Text color='#4e4e4e'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique.</Text>
+                                <Text color='#4e4e4e'>Get alerts when a new device is used to log in to your account for added security.</Text>
                             </VStack>
                         </HStack>
                         <HStack gap='30px'>
