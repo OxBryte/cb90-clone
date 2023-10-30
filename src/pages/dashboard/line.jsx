@@ -51,7 +51,7 @@ const LineChartComponent = ({ performanceData }) => {
     const chartWidth = 400;
 
     return (
-        <Box w={chartWidth} h={chartHeight} bg='white' p='5' borderRadius='lg' boxShadow='md' mt='5' mx='auto'>
+        <Box w='full'  bg='white' p='5' borderRadius='lg' boxShadow='md' mt='5' mx='auto'>
             <Line data={data} options={options}  />
         </Box>
     );
