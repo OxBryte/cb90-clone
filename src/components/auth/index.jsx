@@ -78,7 +78,6 @@ export function LoginComp() {
                         <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
                         <Button px='30px' variant='outline'>Login with Facebook</Button>
                     </HStack> */}
-                <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
                 <HStack gap='20px'>
                     <Divider borderColor='brand.100' />
                     <Text>OR</Text>
@@ -315,7 +314,6 @@ export function SignupComp() {
                         <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
                         <Button px='30px' variant='outline'>Login with Facebook</Button>
                     </HStack> */}
-                <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
                 <HStack gap='20px'>
                     <Divider borderColor='brand.100' />
                     <Text>OR</Text>
