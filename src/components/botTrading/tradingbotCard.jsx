@@ -2,9 +2,11 @@ import { Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Stac
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import LineChartComponent from '../../pages/dashboard/line'
 
-export default function TradingbotCard({ botTitle, item }) {
+export default function TradingbotCard({ botTitle, item, performance }) {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
+
+    console.log(performance, 'heeeeuuuuuu');
 
 
     return (
@@ -72,7 +74,7 @@ export default function TradingbotCard({ botTitle, item }) {
                             </VStack>
 
                             <VStack align='left' gap='20px'>
-                                <LineChartComponent />
+                                <LineChartComponent performanceData={performance} />
                             </VStack>
                         </>
                     ) : (

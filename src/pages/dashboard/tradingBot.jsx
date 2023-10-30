@@ -24,7 +24,7 @@ export default function TradingBot() {
                     }
                 })
                 setData(response.data.data.performance);
-                // console.log(response.data.data.performance);
+                // console.log(response.data.data.performance.profit_line);
                 setLoading(false);
             } catch (err) {
                 setError(err);
@@ -46,7 +46,7 @@ export default function TradingBot() {
                 <VStack w='full' gap='30px'>
                     {data.map((item, i) => (
 
-                        <TradingbotCard item={item} key={i} botTitle={item.bot_id === 1 && 'Day Trading Bot' || item.bot_id === 2 && 'Swing Trading Bot' || item.bot_id === 3 && 'Long-term Hold Bot'} />
+                        <TradingbotCard item={item} performance={item.profit_line} key={i} botTitle={item.bot_id === 1 && 'Day Trading Bot' || item.bot_id === 2 && 'Swing Trading Bot' || item.bot_id === 3 && 'Long-term Hold Bot'} />
                     ))}
                     {/* <TradingbotCard botTitle='Swing Trading Bot' /> */}
                     {/* <TradingbotCard botTitle='Long-term Hold Bot' /> */}
