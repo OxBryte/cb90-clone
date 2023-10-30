@@ -1,12 +1,19 @@
 import { Box, Flex, HStack, Image, Popover, PopoverContent, PopoverTrigger, Stack, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import LineChartComponent from '../../pages/dashboard/line'
+import { BotContext } from '../../context';
+import { useContext, useEffect } from 'react';
 
 export default function TradingbotCard({ botTitle, item, performance }) {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
+    const { performanceData, setPerformanceData } = useContext(BotContext);
 
-    console.log(performance, 'heeeeuuuuuu');
+    useEffect(() => {
+        setPerformanceData(performance);
+    }, [performance, setPerformanceData]);
+
+    // console.log(performanceData, 'heeeeuuuuuu');
 
 
     return (
@@ -74,7 +81,7 @@ export default function TradingbotCard({ botTitle, item, performance }) {
                             </VStack>
 
                             <VStack align='left' gap='20px'>
-                                <LineChartComponent performanceData={performance} />
+                                <LineChartComponent performanceData={performanceData}/>
                             </VStack>
                         </>
                     ) : (

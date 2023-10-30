@@ -1,32 +1,37 @@
 export const Database = [
     {
         id: 1,
-        year: 2019,
+        year: '2023-09-30',
         userGain: 3200
     },
     {
         id: 2,
-        year: 2020,
-        userGain: 2343
+        year: '2023-10-01',
+        userGain: 44.99
     },
     {
         id: 3,
-        year: 2021,
-        userGain: 5000
+        year: '2023-10-02',
+        userGain: 146.79
     },
     {
         id: 4,
-        year: 2022,
-        userGain: 5422
+        year: '2023-10-03',
+        userGain: 72.85
     },
     {
         id: 5,
-        year: 2023,
-        userGain: 4322
+        year: '2023-10-04',
+        userGain: 63.25
     },
     {
         id: 6,
-        year: 2024,
-        userGain: 4333
+        year: '2023-10-05',
+        userGain: 24.56
+    },
+    {
+        id: 7,
+        year: '2023-10-06',
+        userGain: 48.77
     },
 ]

@@ -1,12 +1,17 @@
-// import { useState } from 'react';
-// import { createContext } from "react";
+import { createContext, useState } from 'react';
 
-// export const UserContext = createContext({ loggedIn: false });
+export const BotContext = createContext({
+    performanceData: null,
+    setPerformanceData: () => { }
+});
 
-// const Context = ({children}) => {
-//     const [user, setUser] = useState(() => ({loggedIn: false}));
 
-//     return <UserContext.Provider value={user}>{children}</UserContext.Provider>
-// }
+export const BotProvider = ({ children }) => {
+    const [performanceData, setPerformanceData] = useState(null);
 
-// export default Context;
+    return (
+        <BotContext.Provider value={{ performanceData, setPerformanceData }}>
+            {children}
+        </BotContext.Provider>
+    );
+};
