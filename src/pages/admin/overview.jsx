@@ -40,7 +40,7 @@ export default function AdminOverview() {
             </SimpleGrid>
             <VStack bg='white' gap='30px' rounded='16px' px='16px' py='12px' w='full' my='24px'>
                 <Flex w='full' align='center' justify='space-between'>
-                    <Image src='userGroup.png' alt='' />
+                    <Image src='/userGroup.png' alt='' />
                     <Box>
                         <Popover trigger="hover" placement='bottom-end'>
                             <PopoverTrigger>

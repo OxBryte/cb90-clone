@@ -25,7 +25,8 @@ const colors = {
 };
 
 const fonts = {
-    // heading: `Montserrat, ${base.fonts.heading}`,
+    heading: `'Figtree Variable', sans- serif`,
+    body: `'Figtree Variable', sans- serif`,
 };
 
 

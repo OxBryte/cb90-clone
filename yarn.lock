@@ -1019,6 +1019,11 @@
   "resolved" "https://registry.npmjs.org/@eslint/js/-/js-8.48.0.tgz"
   "version" "8.48.0"
 
+"@fontsource-variable/figtree@^5.0.18":
+  "integrity" "sha512-w7H3FRSMZHQc6rugpAys6iUgG4weWvWmCSsvUU91/ueWhYqjyR0eHCj6F9/5G9Btp5IQTc4IUJXwE+NxSN+GLg=="
+  "resolved" "https://registry.npmjs.org/@fontsource-variable/figtree/-/figtree-5.0.18.tgz"
+  "version" "5.0.18"
+
 "@humanwhocodes/config-array@^0.11.10":
   "integrity" "sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.11.tgz"
