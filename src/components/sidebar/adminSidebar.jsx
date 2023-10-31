@@ -1,9 +1,10 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
 import { FiCpu } from 'react-icons/fi'
 import { RxDashboard } from 'react-icons/rx'
-import { IoHeadsetOutline, IoNotificationsOutline } from 'react-icons/io5'
+import { IoNotificationsOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
+import { PiDesktop } from 'react-icons/pi'
 
 export const AdminSidebarData = [
     {
@@ -18,20 +19,20 @@ export const AdminSidebarData = [
         link: '/admin/tradingbot',
         id: 'tradingbot'
     },
-    {
-        title: 'Alerts',
-        icon: <IoNotificationsOutline />,
-        link: '/admin/alerts',
-        id: 'alerts'
-    },
+    // {
+    //     title: 'Alerts',
+    //     icon: <IoNotificationsOutline />,
+    //     link: '/admin/alerts',
+    //     id: 'alerts'
+    // },
 ]
 
 export const AdminSidebarData2 = [
     {
         title: 'User panel',
-        icon: <IoHeadsetOutline />,
-        link: '/admin/user-panel',
-        id: 'support'
+        icon: <PiDesktop />,
+        link: '/dashboard',
+        id: 'user-panel'
     },
     {
         title: 'Logout',
@@ -50,7 +51,7 @@ export default function AdminSidebar() {
             <VStack gap='50px' w='full'>
                 <HStack w='full' align='left'>
                     <Link to='/'>
-                        <Image src='cb90_logo_white.svg' w='120px' alt='CB90-PRO Logo' />
+                        <Image src='/cb90_logo_white.svg' w='120px' alt='CB90-PRO Logo' />
                     </Link>
                 </HStack>
                 <UnorderedList m='0' listStyleType='none' spacing='10px' w='full'>

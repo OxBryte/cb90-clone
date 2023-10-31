@@ -1,6 +1,6 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
 import { FiSettings, FiCpu } from 'react-icons/fi'
-import { PiTrendUpFill } from 'react-icons/pi'
+import { PiDesktop, PiTrendUpFill } from 'react-icons/pi'
 import { RiExchangeFundsFill } from 'react-icons/ri'
 import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline } from 'react-icons/io5'
@@ -48,6 +48,12 @@ export const SidebarData = [
 
 export const SidebarData2 = [
     {
+        title: 'Back Office',
+        icon: <PiDesktop />,
+        link: '/admin/dashboard',
+        id: 'back-office'
+    },
+    {
         title: 'Support',
         icon: <IoHeadsetOutline />,
         link: '/support',
@@ -70,7 +76,7 @@ export default function Sidebar() {
             <VStack gap='50px' w='full'>
                 <HStack w='full' align='left'>
                     <Link to='/'>
-                        <Image src='cb90_logo_white.svg' w='120px' alt='CB90-PRO Logo' />
+                        <Image src='/cb90_logo_white.svg' w='120px' alt='CB90-PRO Logo' />
                     </Link>
                 </HStack>
                 <UnorderedList m='0' listStyleType='none' spacing='10px' w='full'>

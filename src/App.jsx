@@ -40,7 +40,11 @@ function App() {
             </>
           } />
           <Route path="/admin/:id" element={
+            <>
+              <ProtectedRoute redirectComponent={<Login />}>
                 <Admin />
+              </ProtectedRoute>
+            </>
           } />
           {/* <Route path="/tradingbot" element={<TradingBot />} /> */}
         </Routes>
