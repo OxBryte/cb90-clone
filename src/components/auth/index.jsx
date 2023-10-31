@@ -299,9 +299,9 @@ export function SignupComp() {
                             <Box maxW='500px' boxShadow='xl' bg='white' rounded='30px' p='30px'>
                                 <VStack gap='40px'>
                                     <Heading>Congratulations</Heading>
-                                    <Text textAlign='center'>Click here to schedule a meeting with our representative on how to proceed and activate your account.</Text>
-                                    <Button fontSize='14px' px='40px' py='26px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
-                                        Schedule a meeting
+                                    <Text textAlign='center'>Your account has been created successfully, you will receive a notification once your account has been reviewed and activated.</Text>
+                                    <Button as='a' href='/login' fontSize='14px' px='40px' py='26px' w='fit-content' bgGradient='linear(to-b, brand.200, brand.400)' color="white" _hover={{ bg: 'brand.200', color: 'white' }}>
+                                        Go to Login
                                     </Button>
                                 </VStack>
                             </Box>
