@@ -56,7 +56,7 @@ export const SidebarData2 = [
     {
         title: 'Support',
         icon: <IoHeadsetOutline />,
-        link: '/support',
+        link: 'mailto: abc@example.com',
         id: 'support'
     },
     {

@@ -24,7 +24,7 @@ export default function DashboardNavbar() {
     <HStack bg='white' justify='space-between' align='center' px={['10px', '30px']} py='16px' w='full' boxShadow='sm' m='0'>
       {!isDesktop &&
         <Link to='/'>
-          <Image src='./cb90_logo_black.svg' w='120px' alt='CB90-PRO Logo' />
+          <Image src='/cb90_logo_black.svg' w='120px' alt='CB90-PRO Logo' />
         </Link>
       }
       <Text fontSize='20px' fontWeight='700' color='brand.100'>{pathname === '/dashboard' && 'Overview' || pathname === '/tradingbot' && 'Trading Bot' || pathname === '/alerts' && 'Alerts & Reports' || pathname === '/exchange' && 'Exchanges' || pathname === '/settings' && 'Settings' || pathname === '/support' && 'Help and Support' || pathname === '/market-trend' && 'Market Trend'}</Text>

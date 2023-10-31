@@ -1,7 +1,7 @@
 import { Box, HStack, Image, ListItem, UnorderedList, VStack } from '@chakra-ui/react'
 import { FiCpu } from 'react-icons/fi'
 import { RxDashboard } from 'react-icons/rx'
-import { IoNotificationsOutline } from 'react-icons/io5'
+// import { IoNotificationsOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
 import { PiDesktop } from 'react-icons/pi'

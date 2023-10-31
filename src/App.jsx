@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import Faqs from "./pages/faqs"
 import About from "./pages/about"
@@ -6,7 +6,7 @@ import Login from "./pages/login"
 import Signup from "./pages/signup"
 import ForgottenPassword from "./pages/forgottenPassword"
 import Dashboard from "./pages/dashboard"
-import { setToken } from "./redux/userSlice"
+import { selectToken, setToken } from "./redux/userSlice"
 import { useEffect } from "react"
 import ProtectedRoute from './components/protected'
 import Admin from './pages/admin'
@@ -14,9 +14,9 @@ import Admin from './pages/admin'
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     if (token) {
       dispatch(setToken(token));
     }

@@ -11,7 +11,7 @@ export default function Signup() {
             <SimpleGrid columns={[1, 2]} justifyContent='space-between' w='full'>
                 <VStack display={['none', 'flex']} w='auto' gap='30px' align='left' px='70px' py='50px' bg='brand.500' position='sticky' top='0' h='100vh'>
                     <Link to='/'>
-                        <Image src='./cb90_logo_white.svg' w='180px' alt='CB90-PRO Logo' />
+                        <Image src='/cb90_logo_white.svg' w='180px' alt='CB90-PRO Logo' />
                     </Link>
                     <Text color='white' maxW='560px'>Track your Bot and see an overview of their performance on-the-go with easy dashboard access!</Text>
                     <Carousel />
@@ -20,7 +20,7 @@ export default function Signup() {
                     <VStack w='full' align='left'>
                         <Box mt='70px'>
                             <Link to='/'>
-                                <Image src='./cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
+                                <Image src='/cb90_logo_black.svg' w='180px' alt='CB90-PRO Logo' />
                             </Link>
                         </Box>
                         <VStack w='full' align='left' py='40px' gap='50px'>
