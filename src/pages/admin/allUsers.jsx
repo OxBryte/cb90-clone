@@ -1,6 +1,33 @@
-import React from 'react'
+import { useEffect } from 'react';
+import { selectToken } from '../../redux/userSlice';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 export default function AllUsers() {
+
+  const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+  const token = useSelector(selectToken);
+
+
+  // async function fetchUser() {
+  //   try {
+  //     const response = await axios.get(`${VITE_BASE_URL}/users`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+
+  //     if (response.status === 200) {
+  //       return response.data; // Assuming the server returns user data in the response body
+  //     } else {
+  //       throw new Error('Failed to fetch user data');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching user data:', error);
+  //     throw error;
+  //   }
+  // }
+
   return (
     <>
       <h1>All Users</h1>

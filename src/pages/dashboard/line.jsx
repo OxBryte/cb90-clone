@@ -12,11 +12,13 @@ const LineChartComponent = ({ performanceData }) => {
     // const profitLine = performanceData;
     // console.log(profitLine, 'hee');
 
-    // // Extract dates and values
-    // const dates = profitLine[0].map(entry => entry[0]);;
-    // const values = profitLine;
+    // const dates = profitLine[0].map(entry => entry[0]);
+    // const values = profitLine[0].map(entry => entry[1]);
 
-
+    // const data = {
+    //     labels: dates,
+    //     datasets: values,
+    // }
 
     const data = {
         labels: Database.map((data) => data.year),
@@ -51,8 +53,8 @@ const LineChartComponent = ({ performanceData }) => {
     const chartWidth = 400;
 
     return (
-        <Box w='full'  bg='white' p='5' borderRadius='lg' boxShadow='md' mt='5' mx='auto'>
-            <Line data={data} options={options}  />
+        <Box w='full' bg='white' p='5' borderRadius='lg' boxShadow='md' mt='5' mx='auto'>
+            <Line data={data} options={options} />
         </Box>
     );
 }

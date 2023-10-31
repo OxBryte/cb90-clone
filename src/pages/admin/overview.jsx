@@ -1,6 +1,7 @@
 import { SimpleGrid, VStack, Box, Heading, Text, useBreakpointValue, Flex, Image, Popover, PopoverTrigger, PopoverContent } from '@chakra-ui/react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { PiCurrencyCircleDollar } from 'react-icons/pi'
+import AllUsers from './allUsers'
 
 export default function AdminOverview() {
 
@@ -80,7 +81,9 @@ export default function AdminOverview() {
                     </VStack>
                 </Flex>
             </VStack>
-            
+            <VStack my='24px' w='full'>
+                <AllUsers />
+            </VStack>
         </>
     )
 }
