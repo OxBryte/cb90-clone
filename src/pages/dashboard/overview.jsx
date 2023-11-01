@@ -111,17 +111,17 @@ export default function Overview() {
                                 <Popover trigger="hover" placement='bottom-start'>
                                     <PopoverTrigger>
                                         <Flex cursor='pointer' align='center' justify='space-between' w='160px' p='12px' bg='brand.900' rounded='12px' gap='12px'>
-                                            Day Trading Bot
+                                            CB90-PRO
                                             <MdKeyboardArrowDown size={25} />
                                         </Flex>
                                     </PopoverTrigger>
                                     <PopoverContent w='180px' border='none' boxShadow='md'>
                                         <VStack bg='white' rounded='12px' w='full' gap='0'>
                                             <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
-                                                Swing Trading Bot
+                                                Futures Contracts
                                             </Flex>
                                             <Flex cursor='pointer' align='left' w='full' justify='space-between' p='12px' rounded='12px' _hover={{ bg: 'brand.900', rounded: 'none' }} gap='12px'>
-                                                Long-Term Trading Bot
+                                                Long Term Holdings
                                             </Flex>
                                         </VStack>
                                     </PopoverContent>
