@@ -1,8 +1,8 @@
-import { Box, Button, Flex, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, Input, Text, VStack } from '@chakra-ui/react'
 import moment from 'moment'
-import React from 'react'
+import { useState } from 'react';
 
-export default function ViewDetails({ selectedUser }) {
+export function ViewDetails({ selectedUser, setUserInfo, setEditUser }) {
     return (
         <>
             <VStack w='full' align='left' gap='24px'>
@@ -32,7 +32,55 @@ export default function ViewDetails({ selectedUser }) {
                     </VStack>
                 </Box>
                 <Flex w='full' align='center' gap='24px'>
-                    <Button w='full' size='lg' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }}>Edit</Button>
+                    <Button w='full' size='lg' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }} onClick={() => { setUserInfo(false) }}>Edit</Button>
+                </Flex>
+            </VStack>
+        </>
+    )
+}
+
+
+export function EditUserDetails({ selectedUser, setEditUser }) {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [location, setLocation] = useState('');
+
+    return (
+        <>
+            <VStack w='full' align='left' gap='24px'>
+                <Box w='full'>
+                    <Text fontWeight={600} >Personal Details</Text>
+                    <Grid templateColumns='repeat(4, 1fr)' gap={3} mt='24px'>
+                        <GridItem colSpan={2}>
+                            <Flex flexDir='column' gap={2}>
+                                <Text>First Name</Text>
+                                <Input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder={selectedUser.first_name} type='text' />
+                            </Flex>
+                        </GridItem>
+                        <GridItem colSpan={2}>
+                            <Flex flexDir='column' gap={2}>
+                                <Text>Last Name</Text>
+                                <Input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder={selectedUser.last_name} type='text' />
+                            </Flex>
+                        </GridItem>
+                        <GridItem colSpan={2}>
+                            <Flex flexDir='column' gap={2}>
+                                <Text>Email Address</Text>
+                                <Input disabled value={email} onChange={(e) => setEmail(e.target.value)} placeholder={selectedUser.email} type='text' />
+                            </Flex>
+                        </GridItem>
+                        <GridItem colSpan={2}>
+                            <Flex flexDir='column' gap={2}>
+                                <Text>Location</Text>
+                                <Input value={location} onChange={(e) => setLocation(e.target.value)} placeholder={selectedUser.country} type='text' />
+                            </Flex>
+                        </GridItem>
+                    </Grid>
+                </Box>
+                <Flex w='full' align='center' gap='24px'>
+                    <Button w='full' size='lg' bgGradient='linear(to-b, brand.200, brand.400)' color='white' _hover={{ bg: 'brand.200' }}>Save Changes</Button>
                 </Flex>
             </VStack>
         </>

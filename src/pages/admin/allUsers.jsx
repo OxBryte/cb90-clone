@@ -7,11 +7,12 @@ import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
 import { GoTrash } from 'react-icons/go';
 import { useState } from 'react';
-import ViewDetails from '../../components/modal';
+import { ViewDetails, EditUserDetails } from '../../components/modal';
 
 export default function AllUsers({ loading, error, users }) {
 
-  const [useInfo, setUserInfo] = useState(false)
+  const [userInfo, setUserInfo] = useState(false)
+  const [editUser, setEditUser] = useState(false)
   const [selectedUser, setSelectedUser] = useState(null);
   const toast = useToast();
 
@@ -140,14 +141,14 @@ export default function AllUsers({ loading, error, users }) {
                                 <CgMore size={20} />
                               </MenuButton>
                               <MenuList p='0' rounded='18px' overflow='hidden'>
-                                <MenuItem>
-                                  <Flex align='center' py='12px' gap='12px' onClick={() => { setUserInfo(true); setSelectedUser(user); }}>
+                                <MenuItem onClick={() => { setUserInfo(true); setSelectedUser(user); }}>
+                                  <Flex align='center' py='12px' gap='12px'>
                                     <BiUserCircle size={20} />
                                     <Text>View details</Text>
                                   </Flex>
                                 </MenuItem>
-                                <MenuItem>
-                                  <Flex align='center' py='12px' gap='12px'>
+                                <MenuItem onClick={() => { setSelectedUser(user); setEditUser(true); }}>
+                                  <Flex align='center' py='12px' gap='12px' >
                                     <BiEditAlt size={20} />
                                     <Text>Edit</Text>
                                   </Flex>
@@ -178,7 +179,7 @@ export default function AllUsers({ loading, error, users }) {
           </TableContainer>
         )}
       </Box>
-      {useInfo && (
+      {userInfo && (
         <>
           <Modal isOpen={setUserInfo} onClose={() => setUserInfo(false)}>
             <ModalOverlay />
@@ -188,7 +189,23 @@ export default function AllUsers({ loading, error, users }) {
                 User Details
               </ModalHeader>
               <ModalBody>
-                <ViewDetails selectedUser={selectedUser} />
+                <ViewDetails selectedUser={selectedUser} setUserInfo={setUserInfo} />
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </>
+      )}
+      {editUser && (
+        <>
+          <Modal isOpen={setEditUser} onClose={() => setEditUser(false)}>
+            <ModalOverlay />
+            <ModalContent justify='center'>
+              <ModalCloseButton />
+              <ModalHeader>
+                Edit User Details
+              </ModalHeader>
+              <ModalBody>
+                <EditUserDetails selectedUser={selectedUser} setEditUser={setEditUser} />
               </ModalBody>
             </ModalContent>
           </Modal>
