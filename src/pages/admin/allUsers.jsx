@@ -1,4 +1,4 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, useDisclosure } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
 import { CgMore, CgToggleOn } from 'react-icons/cg'
@@ -7,9 +7,11 @@ import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
 import { GoTrash } from 'react-icons/go';
 import { useState } from 'react';
+import Modal from '../../components/modal';
 
 export default function AllUsers({ loading, error, users }) {
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const toast = useToast();
 
   // Copy to clipboard function
@@ -138,7 +140,7 @@ export default function AllUsers({ loading, error, users }) {
                               </MenuButton>
                               <MenuList p='0' rounded='18px' overflow='hidden'>
                                 <MenuItem>
-                                  <Flex align='center' py='12px' gap='12px'>
+                                  <Flex align='center' py='12px' gap='12px' onClick={() => onOpen()}>
                                     <BiUserCircle />
                                     <Text>View details</Text>
                                   </Flex>
@@ -170,12 +172,12 @@ export default function AllUsers({ loading, error, users }) {
                     )}
                   </>
                 )}
-
               </Tbody>
             </Table>
           </TableContainer>
         )}
       </Box>
+      <Modal onClose={onClose} isOpen={isOpen} />
     </>
   )
 }
