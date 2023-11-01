@@ -1,4 +1,4 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
 import { CgMore, CgToggleOn } from 'react-icons/cg'
@@ -182,13 +182,13 @@ export default function AllUsers({ loading, error, users }) {
         <>
           <Modal isOpen={setUserInfo} onClose={() => setUserInfo(false)}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent justify='center'>
               <ModalCloseButton />
+              <ModalHeader>
+                User Details
+              </ModalHeader>
               <ModalBody>
-                <Box maxW='500px' h='500px' boxShadow='xl' bg='white' rounded='30px' p='30px'>
-                  hi
-                  <ViewDetails selectedUser={selectedUser} />
-                </Box>
+                <ViewDetails selectedUser={selectedUser} />
               </ModalBody>
             </ModalContent>
           </Modal>
