@@ -1,9 +1,11 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
-import { CgMore } from 'react-icons/cg'
+import { CgMore, CgToggleOn } from 'react-icons/cg'
 import { MdFilterList } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
+import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
+import { GoTrash } from 'react-icons/go';
 
 export default function AllUsers({ loading, error, users }) {
 
@@ -96,7 +98,39 @@ export default function AllUsers({ loading, error, users }) {
                       </Td>
                       <Td>{moment(user.created_at).format('LL')}</Td>
                       <Td>null</Td>
-                      <Td><CgMore size={25} /></Td>
+                      <Td>
+                        <Menu>
+                          <MenuButton as={Button} bg='none'>
+                            <CgMore size={25} />
+                          </MenuButton>
+                          <MenuList p='0' rounded='18px' overflow='hidden'>
+                            <MenuItem>
+                              <Flex align='center' py='12px' gap='12px'>
+                                <BiUserCircle/>
+                                <Text>View details</Text>
+                              </Flex>
+                            </MenuItem>
+                            <MenuItem>
+                              <Flex align='center' py='12px' gap='12px'>
+                                <BiEditAlt />
+                                <Text>Edit</Text>
+                              </Flex>
+                            </MenuItem>
+                            <MenuItem>
+                              <Flex align='center' py='12px' gap='12px'>
+                                <CgToggleOn />
+                                <Text>Activate</Text>
+                              </Flex>
+                            </MenuItem>
+                            <MenuItem>
+                              <Flex align='center' py='12px' gap='12px'>
+                                <GoTrash />
+                                <Text>Delete</Text>
+                              </Flex>
+                            </MenuItem>
+                          </MenuList>
+                        </Menu>
+                      </Td>
                     </Tr>
                   )
                 }
