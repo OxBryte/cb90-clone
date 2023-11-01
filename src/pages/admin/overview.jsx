@@ -28,7 +28,7 @@ export default function AdminOverview() {
 
                 if (response.status === 200) {
                     setUsers(response.data.data);
-                    console.log(response.data)
+                    // console.log(response.data)
                     setLoading(false);
                 } else {
                     throw new Error('Failed to fetch user data');

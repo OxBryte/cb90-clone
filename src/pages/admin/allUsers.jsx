@@ -8,6 +8,9 @@ import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
 import { GoTrash } from 'react-icons/go';
 import { useState } from 'react';
 import { ViewDetails, EditUserDetails } from '../../components/modal';
+import { selectToken } from '../../redux/userSlice';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 export default function AllUsers({ loading, error, users }) {
 
@@ -15,6 +18,8 @@ export default function AllUsers({ loading, error, users }) {
   const [editUser, setEditUser] = useState(false)
   const [selectedUser, setSelectedUser] = useState(null);
   const toast = useToast();
+  const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+  const token = useSelector(selectToken);
 
   // Copy to clipboard function
   function copyToClipboard(text) {
@@ -53,6 +58,54 @@ export default function AllUsers({ loading, error, users }) {
       last_name.toLowerCase().includes(inputText)
     );
   });
+
+  // Activate User
+  const handleSubmit = async (ID) => {
+    // setLoading(true)
+    const payload = {
+      id: ID
+    };
+
+    try {
+      const response = await axios.post(`${VITE_BASE_URL}/admin/activate`, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      // setLoading(false)
+      if (response.data?.status) {
+        const successMessage = response.data?.message;
+        toast({
+          title: successMessage,
+          description: 'Congratulations! You have successfully activated the user account.',
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        console.log(payload);
+
+      } else {
+        const errorMessage = response?.message || 'User not found';
+        toast({
+          title: errorMessage,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+
+    } catch (error) {
+      console.error('User not found');
+      toast({
+        title: 'User not found',
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
 
 
   return (
@@ -153,7 +206,7 @@ export default function AllUsers({ loading, error, users }) {
                                     <Text>Edit</Text>
                                   </Flex>
                                 </MenuItem>
-                                <MenuItem>
+                                <MenuItem onClick={() => handleSubmit(user.id)}>
                                   <Flex align='center' py='12px' gap='12px'>
                                     <CgToggleOn size={20} />
                                     <Text>Activate</Text>
