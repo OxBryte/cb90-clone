@@ -6,6 +6,7 @@ import { MdFilterList } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
 import { GoTrash } from 'react-icons/go';
+import { useState } from 'react';
 
 export default function AllUsers({ loading, error, users }) {
 
@@ -30,15 +31,40 @@ export default function AllUsers({ loading, error, users }) {
     });
   }
 
+  // Search function
+  const [inputText, setInputText] = useState("");
+
+  const inputHandler = (e) => {
+    setInputText(e.target.value.toLowerCase());
+  };
+
+  const filteredData = users.filter((user) => {
+    const { email, first_name, last_name } = user;
+
+    if (!inputText) return true;
+
+    return (
+      email.toLowerCase().includes(inputText) ||
+      first_name.toLowerCase().includes(inputText) ||
+      last_name.toLowerCase().includes(inputText)
+    );
+  });
+
+
   return (
     <>
       <Box bg='white' p='16px' rounded='16px' w='full'>
         <HStack align='center' justify='space-between' w='full' mb='20px'>
           <Text px='12px' py='8px' bg='brand.300' fontWeight={400} rounded='lg'>Existing users</Text>
           <Flex>
-            <Input type='search' placeholder='Search users' size='sm' w='260px' />
+            <Input type='search' value={inputText} onChange={inputHandler} placeholder='Search users' size='sm' w='260px' minW='full' />
           </Flex>
         </HStack>
+        <Box>
+          {inputText.length > 0 && filteredData.length >= 0 && (
+            <Text>Search: Found {filteredData.length} </Text>
+          )}
+        </Box>
         {loading ? (
           <Flex w='full' h='200px' align='center' justify='center' mt='20px'>
             <BeatLoader size={20} color='#018083' />
@@ -85,56 +111,66 @@ export default function AllUsers({ loading, error, users }) {
                 </Tr>
               </Thead>
               <Tbody>
-                {users.map((user, index) => {
-
-                  return (
-                    <Tr key={index}>
-                      <Td>{user.first_name} {user.last_name}</Td>
-                      <Td>
-                        <Flex cursor='pointer' align='center' gap='4px' onClick={() => copyToClipboard(user.email)}>
-                          {user.email}
-                          <FiCopy />
-                        </Flex>
-                      </Td>
-                      <Td>{moment(user.created_at).format('LL')}</Td>
-                      <Td>null</Td>
-                      <Td>
-                        <Menu>
-                          <MenuButton as={Button} bg='none'>
-                            <CgMore size={25} />
-                          </MenuButton>
-                          <MenuList p='0' rounded='18px' overflow='hidden'>
-                            <MenuItem>
-                              <Flex align='center' py='12px' gap='12px'>
-                                <BiUserCircle/>
-                                <Text>View details</Text>
-                              </Flex>
-                            </MenuItem>
-                            <MenuItem>
-                              <Flex align='center' py='12px' gap='12px'>
-                                <BiEditAlt />
-                                <Text>Edit</Text>
-                              </Flex>
-                            </MenuItem>
-                            <MenuItem>
-                              <Flex align='center' py='12px' gap='12px'>
-                                <CgToggleOn />
-                                <Text>Activate</Text>
-                              </Flex>
-                            </MenuItem>
-                            <MenuItem>
-                              <Flex align='center' py='12px' gap='12px'>
-                                <GoTrash />
-                                <Text>Delete</Text>
-                              </Flex>
-                            </MenuItem>
-                          </MenuList>
-                        </Menu>
-                      </Td>
-                    </Tr>
-                  )
-                }
+                {filteredData.length === 0 ? (
+                  <Tr>
+                    <Td colSpan={5} py="30px" textAlign="center">
+                      Not found
+                    </Td>
+                  </Tr>
+                ) : (
+                  <>
+                    {filteredData.map((user, index) => {
+                      return (
+                        <Tr key={index}>
+                          <Td>{user.first_name} {user.last_name}</Td>
+                          <Td>
+                            <Flex cursor='pointer' align='center' gap='4px' onClick={() => copyToClipboard(user.email)}>
+                              {user.email}
+                              <FiCopy />
+                            </Flex>
+                          </Td>
+                          <Td>{moment(user.created_at).format('LL')}</Td>
+                          <Td>null</Td>
+                          <Td>
+                            <Menu>
+                              <MenuButton as={Button} bg='none'>
+                                <CgMore size={25} />
+                              </MenuButton>
+                              <MenuList p='0' rounded='18px' overflow='hidden'>
+                                <MenuItem>
+                                  <Flex align='center' py='12px' gap='12px'>
+                                    <BiUserCircle />
+                                    <Text>View details</Text>
+                                  </Flex>
+                                </MenuItem>
+                                <MenuItem>
+                                  <Flex align='center' py='12px' gap='12px'>
+                                    <BiEditAlt />
+                                    <Text>Edit</Text>
+                                  </Flex>
+                                </MenuItem>
+                                <MenuItem>
+                                  <Flex align='center' py='12px' gap='12px'>
+                                    <CgToggleOn />
+                                    <Text>Activate</Text>
+                                  </Flex>
+                                </MenuItem>
+                                <MenuItem>
+                                  <Flex align='center' py='12px' gap='12px'>
+                                    <GoTrash />
+                                    <Text>Delete</Text>
+                                  </Flex>
+                                </MenuItem>
+                              </MenuList>
+                            </Menu>
+                          </Td>
+                        </Tr>
+                      )
+                    }
+                    )}
+                  </>
                 )}
+
               </Tbody>
             </Table>
           </TableContainer>
