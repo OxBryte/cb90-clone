@@ -6,6 +6,7 @@ import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import { selectUser } from '../../redux/userSlice';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { SidebarData, SidebarData2 } from '../sidebar';
+import { getInitials } from '../../utils';
 
 export default function DashboardNavbar() {
 
@@ -18,6 +19,8 @@ export default function DashboardNavbar() {
   const user = useSelector(selectUser);
 
   const firstName = user?.user?.first_name || '';
+  const lastName = user?.user?.last_name || '';
+
 
 
   return (
@@ -37,7 +40,7 @@ export default function DashboardNavbar() {
                 <Text fontWeight='600'>
                   {firstName}
                 </Text>
-                <Avatar size='sm' name='Christian Nwamba' src='https://bit.ly/code-beast' />
+                <Avatar size='sm' name={`${firstName} + ${lastName}`} src={getInitials(`${firstName} + ${lastName}`)} />
               </Flex>
             </PopoverTrigger>
             <PopoverContent w='fit-contnet'>
