@@ -1,4 +1,4 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, useDisclosure } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
 import { CgMore, CgToggleOn } from 'react-icons/cg'
@@ -7,11 +7,12 @@ import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
 import { GoTrash } from 'react-icons/go';
 import { useState } from 'react';
-import Modal from '../../components/modal';
+import ViewDetails from '../../components/modal';
 
 export default function AllUsers({ loading, error, users }) {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [useInfo, setUserInfo] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(null);
   const toast = useToast();
 
   // Copy to clipboard function
@@ -136,30 +137,30 @@ export default function AllUsers({ loading, error, users }) {
                           <Td>
                             <Menu>
                               <MenuButton as={Button} bg='none'>
-                                <CgMore size={25} />
+                                <CgMore size={20} />
                               </MenuButton>
                               <MenuList p='0' rounded='18px' overflow='hidden'>
                                 <MenuItem>
-                                  <Flex align='center' py='12px' gap='12px' onClick={() => onOpen()}>
-                                    <BiUserCircle />
+                                  <Flex align='center' py='12px' gap='12px' onClick={() => { setUserInfo(true); setSelectedUser(user); }}>
+                                    <BiUserCircle size={20} />
                                     <Text>View details</Text>
                                   </Flex>
                                 </MenuItem>
                                 <MenuItem>
                                   <Flex align='center' py='12px' gap='12px'>
-                                    <BiEditAlt />
+                                    <BiEditAlt size={20} />
                                     <Text>Edit</Text>
                                   </Flex>
                                 </MenuItem>
                                 <MenuItem>
                                   <Flex align='center' py='12px' gap='12px'>
-                                    <CgToggleOn />
+                                    <CgToggleOn size={20} />
                                     <Text>Activate</Text>
                                   </Flex>
                                 </MenuItem>
                                 <MenuItem>
                                   <Flex align='center' py='12px' gap='12px'>
-                                    <GoTrash />
+                                    <GoTrash size={20} />
                                     <Text>Delete</Text>
                                   </Flex>
                                 </MenuItem>
@@ -177,7 +178,22 @@ export default function AllUsers({ loading, error, users }) {
           </TableContainer>
         )}
       </Box>
-      <Modal onClose={onClose} isOpen={isOpen} />
+      {useInfo && (
+        <>
+          <Modal isOpen={setUserInfo} onClose={() => setUserInfo(false)}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalCloseButton />
+              <ModalBody>
+                <Box maxW='500px' h='500px' boxShadow='xl' bg='white' rounded='30px' p='30px'>
+                  hi
+                  <ViewDetails selectedUser={selectedUser} />
+                </Box>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </>
+      )}
     </>
   )
 }
