@@ -2,10 +2,50 @@ import { SimpleGrid, VStack, Box, Heading, Text, useBreakpointValue, Flex, Image
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { PiCurrencyCircleDollar } from 'react-icons/pi'
 import AllUsers from './allUsers'
+import { useSelector } from 'react-redux'
+import { selectToken } from '../../redux/userSlice'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import moment from 'moment'
 
 export default function AdminOverview() {
 
     const isDesktop = useBreakpointValue({ base: false, lg: true })
+    const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+    const token = useSelector(selectToken);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        async function fetchUser() {
+            try {
+                const response = await axios.get(`${VITE_BASE_URL}/admin/users`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (response.status === 200) {
+                    setUsers(response.data.data);
+                    console.log(response.data)
+                    setLoading(false);
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                setError(error);
+                setLoading(false);
+            }
+        }
+        fetchUser();
+    }, [token, VITE_BASE_URL]);
+
+    const usersLast24Hours = users.filter(user => moment().diff(moment(user.created_at), 'hours') < 24).length;
+    const percentageChange = ((usersLast24Hours / users.length) * 100);
+
+
 
     return (
         <>
@@ -65,24 +105,24 @@ export default function AdminOverview() {
                 <Flex w='full' justify='space-between' align='flex-start'>
                     <VStack align='left' gap='0'>
                         <Text fontSize='14px' fontWeight={400} color='#636363'>All Users</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >11,543 <Box as='span' color='#00B200' fontWeight={500} fontSize={14}>+15.80%</Box> </Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >{users.length} <Box as='span' color={percentageChange > 0 ? '#00B200' : '#FF0909'} fontWeight={500} fontSize={14}>{percentageChange.toFixed(2)}%</Box> </Text>
                     </VStack>
                     <VStack align='left' gap='0'>
                         <Text fontSize='14px' fontWeight={400} color='#636363'>Active Users</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >1,180<Box as='span' color='#00B200' fontWeight={500} fontSize={14}>+85%</Box> </Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >0<Box as='span' color='#00B200' fontWeight={500} fontSize={14}>+0%</Box> </Text>
                     </VStack>
                     <VStack align='left' gap='0'>
                         <Text fontSize='14px' fontWeight={400} color='#636363'>Pending Verification</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >10 </Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >0 </Text>
                     </VStack>
                     <VStack align='left' gap='0'>
                         <Text fontSize='14px' fontWeight={400} color='#636363'>Deactivated</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >70<Box as='span' color='#FF0909' fontWeight={500} fontSize={14}>-10%</Box> </Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >0<Box as='span' color='#FF0909' fontWeight={500} fontSize={14}>+0%</Box> </Text>
                     </VStack>
                 </Flex>
             </VStack>
             <VStack my='24px' w='full'>
-                <AllUsers />
+                <AllUsers loading={loading} users={users} error={error} />
             </VStack>
         </>
     )

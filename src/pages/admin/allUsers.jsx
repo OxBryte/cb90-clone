@@ -1,45 +1,10 @@
-import { useEffect, useState } from 'react';
-import { selectToken } from '../../redux/userSlice';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
 import { CgMore } from 'react-icons/cg'
 import { MdFilterList } from 'react-icons/md';
 
-export default function AllUsers() {
-
-  const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-  const token = useSelector(selectToken);
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchUser() {
-      try {
-        const response = await axios.get(`${VITE_BASE_URL}/admin/users`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (response.status === 200) {
-          setUsers(response.data.data);
-          console.log(response.data)
-          setLoading(false);
-        } else {
-          throw new Error('Failed to fetch user data');
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-        setError(error);
-        setLoading(false);
-      }
-    }
-    fetchUser();
-  }, [token, VITE_BASE_URL]);
+export default function AllUsers({loading, error, users}) {
 
   return (
     <>
