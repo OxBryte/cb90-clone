@@ -39,7 +39,7 @@ export default function AdminOverview() {
                 setLoading(false);
             }
         }
-        fetchUser();
+        fetchUser();        
     }, [token, VITE_BASE_URL]);
 
     const usersLast24Hours = users.filter(user => moment().diff(moment(user.created_at), 'hours') < 24).length;

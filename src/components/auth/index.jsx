@@ -74,15 +74,6 @@ export function LoginComp() {
     return (
         <>
             <VStack w='full' gap='20px' align='left'>
-                {/* <HStack gap='30px'>
-                        <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
-                        <Button px='30px' variant='outline'>Login with Facebook</Button>
-                    </HStack> */}
-                <HStack gap='20px'>
-                    <Divider borderColor='brand.100' />
-                    <Text>OR</Text>
-                    <Divider borderColor='brand.100' />
-                </HStack>
                 <FormControl as='form' w='full' onSubmit={handleSubmit}>
                     <VStack gap='20px' w='full' align='left'>
                         <Box>
@@ -310,15 +301,6 @@ export function SignupComp() {
                 </>
             )}
             <VStack w='full' gap='20px' align='left'>
-                {/* <HStack gap='30px'>
-                        <Button px='30px' variant='outline' align='center' gap='10px'><FcGoogle size={25} /> Login with Google</Button>
-                        <Button px='30px' variant='outline'>Login with Facebook</Button>
-                    </HStack> */}
-                <HStack gap='20px'>
-                    <Divider borderColor='brand.100' />
-                    <Text>OR</Text>
-                    <Divider borderColor='brand.100' />
-                </HStack>
                 <FormControl as='form' w='full' onSubmit={handleSubmit}>
                     <VStack gap='20px' w='full' align='left'>
                         <SimpleGrid columns={[1, 2]} w='full' gap='20px'>

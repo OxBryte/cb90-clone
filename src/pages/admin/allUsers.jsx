@@ -1,7 +1,7 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader, Badge } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
-import { CgMore, CgToggleOn } from 'react-icons/cg'
+import { CgMore, CgToggleOff, CgToggleOn } from 'react-icons/cg'
 import { MdFilterList } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
@@ -187,7 +187,7 @@ export default function AllUsers({ loading, error, users }) {
                             </Flex>
                           </Td>
                           <Td>{moment(user.created_at).format('LL')}</Td>
-                          <Td>null</Td>
+                          <Td>{user.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>}</Td>
                           <Td>
                             <Menu>
                               <MenuButton as={Button} bg='none'>
@@ -207,10 +207,17 @@ export default function AllUsers({ loading, error, users }) {
                                   </Flex>
                                 </MenuItem>
                                 <MenuItem onClick={() => handleSubmit(user.id)}>
-                                  <Flex align='center' py='12px' gap='12px'>
-                                    <CgToggleOn size={20} />
-                                    <Text>Activate</Text>
-                                  </Flex>
+                                  {user.activated === true ? (
+                                    <Flex align='center' py='12px' gap='12px'>
+                                      <CgToggleOff size={20} />
+                                      <Text>Deactivate</Text>
+                                    </Flex>
+                                  ) : (
+                                    <Flex align='center' py='12px' gap='12px'>
+                                      <CgToggleOn size={20} />
+                                      <Text>Activate</Text>
+                                    </Flex>
+                                  )}
                                 </MenuItem>
                                 <MenuItem>
                                   <Flex align='center' py='12px' gap='12px'>
