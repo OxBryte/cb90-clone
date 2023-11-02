@@ -74,7 +74,6 @@ export default function Sidebar() {
     const user = useSelector(selectUser);
 
     const userRole = user?.user?.role_id
-    console.log(userRole);
 
 
     const { id } = useParams()
