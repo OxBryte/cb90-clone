@@ -69,7 +69,7 @@ export default function Overview() {
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
                             <Text>Account Status</Text>
                         </Flex>
-                        <Text fontWeight={700}>{accountStatus}</Text>
+                        <Text fontWeight={700} textTransform='capitalize'>{accountStatus}</Text>
                     </VStack>
                     <VStack align='center' gap='20px' >
                         <Flex justify='center' fontWeight={600} w={['auto','180px']} bg='brand.300' p='20px' rounded='8px'>
