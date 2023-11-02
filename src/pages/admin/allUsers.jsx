@@ -207,7 +207,7 @@ export default function AllUsers({ loading, error, users }) {
                                     <Text>Edit</Text>
                                   </Flex>
                                 </MenuItem>
-                                <MenuItem onClick={() => handleSubmit(user.id)}>
+                                <MenuItem onClick={() => { user.activated === true ? '' : handleSubmit(user.id) }}>
                                   {user.activated === true ? (
                                     <Flex align='center' py='12px' gap='12px'>
                                       <LiaToggleOnSolid size={20} />

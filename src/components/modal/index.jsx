@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, GridItem, Input, Text, VStack } from '@chakra-ui/react'
+import { Badge, Box, Button, Flex, Grid, GridItem, Input, Text, VStack } from '@chakra-ui/react'
 import moment from 'moment'
 import { useState } from 'react';
 
@@ -17,6 +17,9 @@ export function ViewDetails({ selectedUser, setUserInfo, setEditUser }) {
                         </Box>
                         <Box px='12px' py='10px' rounded='8px' bg='gray.100'>
                             <Text fontWeight={700}>Country: <Box as='span' fontWeight={400}> {selectedUser.country}</Box></Text>
+                        </Box>
+                        <Box px='12px' py='10px' rounded='8px' >
+                            <Text fontWeight={700}>Satus: <Box as='span' ml='4px' fontWeight={400}> {selectedUser.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>}</Box></Text>
                         </Box>
                     </VStack>
                 </Box>
