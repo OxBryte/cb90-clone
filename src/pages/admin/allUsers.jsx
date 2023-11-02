@@ -188,7 +188,7 @@ export default function AllUsers({ loading, error, users }) {
                             </Flex>
                           </Td>
                           <Td>{moment(user.created_at).format('LL')}</Td>
-                          <Td>{user.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>}</Td>
+                          <Td>{user.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>} {user.role_id === '2' && <Badge colorScheme='blue'>Admin</Badge> }</Td>
                           <Td>
                             <Menu>
                               <MenuButton as={Button} bg='none'>

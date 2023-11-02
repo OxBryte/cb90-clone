@@ -39,7 +39,7 @@ export default function AdminOverview() {
                 setLoading(false);
             }
         }
-        fetchUser();       
+        fetchUser();
 
         const intervalId = setInterval(fetchUser, 10000);
 
@@ -49,6 +49,9 @@ export default function AdminOverview() {
     const usersLast24Hours = users.filter(user => moment().diff(moment(user.created_at), 'hours') < 24).length;
     const percentageChange = ((usersLast24Hours / users.length) * 100);
 
+    const activeUsersCount = users.filter(user => user.activated === true).length;
+    const inactiveUsersCount = users.filter(user => user.activated === false).length;
+    const adminUsersCount = users.filter(user => user.role_id === '2').length;
 
 
     return (
@@ -113,15 +116,15 @@ export default function AdminOverview() {
                     </VStack>
                     <VStack align='left' gap='0'>
                         <Text fontSize='14px' fontWeight={400} color='#636363'>Active Users</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >0<Box as='span' color='#00B200' fontWeight={500} fontSize={14}>+0%</Box> </Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >{activeUsersCount}</Text>
                     </VStack>
                     <VStack align='left' gap='0'>
-                        <Text fontSize='14px' fontWeight={400} color='#636363'>Pending Verification</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >0 </Text>
+                        <Text fontSize='14px' fontWeight={400} color='#636363'>Inactive Users</Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >{inactiveUsersCount}</Text>
                     </VStack>
                     <VStack align='left' gap='0'>
-                        <Text fontSize='14px' fontWeight={400} color='#636363'>Deactivated</Text>
-                        <Text fontSize='20px' fontWeight={700} color='#222222' >0<Box as='span' color='#FF0909' fontWeight={500} fontSize={14}>+0%</Box> </Text>
+                        <Text fontSize='14px' fontWeight={400} color='#636363'>Admin</Text>
+                        <Text fontSize='20px' fontWeight={700} color='#222222' >{adminUsersCount}</Text>
                     </VStack>
                 </Flex>
             </VStack>
