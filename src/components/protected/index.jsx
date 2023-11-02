@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { selectToken } from '../../redux/userSlice';
+import { selectToken, selectUser } from '../../redux/userSlice';
 
-export default function ProtectedRoute({ children, redirectComponent = <Navigate to="/login" /> }) {
+export default function ProtectedRoute({ children, role, redirectComponent = <Navigate to="/login" /> }) {
     const token = useSelector(selectToken);
+    const user = useSelector(selectUser);
+    const currentRole = user?.user?.role_id;
 
-    if (!token) {
+    if (!token || (role && currentRole !== role)) {
         return redirectComponent;
     }
     return children

@@ -20,7 +20,7 @@ function App() {
     if (token) {
       dispatch(setToken(token));
     }
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <>
@@ -41,7 +41,7 @@ function App() {
           } />
           <Route path="/admin/:id" element={
             <>
-              <ProtectedRoute redirectComponent={<Login />}>
+              <ProtectedRoute redirectComponent={<Login />} role={'2'}>
                 <Admin />
               </ProtectedRoute>
             </>

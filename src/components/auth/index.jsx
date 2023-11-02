@@ -1,5 +1,4 @@
-import { Box, Button, Divider, Checkbox, HStack, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast, Spinner, Flex, Heading } from '@chakra-ui/react'
-import { FcGoogle } from 'react-icons/fc'
+import { Box, Button, Checkbox, Input, SimpleGrid, Text, VStack, FormControl, Select, InputGroup, InputRightElement, useToast, Spinner, Flex, Heading } from '@chakra-ui/react'
 import { useState } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
 import { useNavigate } from 'react-router-dom'
