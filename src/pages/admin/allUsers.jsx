@@ -1,7 +1,8 @@
 import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader, Badge } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
-import { CgMore, CgToggleOff, CgToggleOn } from 'react-icons/cg'
+import { CgMore, } from 'react-icons/cg'
+import { LiaToggleOnSolid, LiaToggleOffSolid } from 'react-icons/lia'
 import { MdFilterList } from 'react-icons/md';
 import { FiCopy } from 'react-icons/fi';
 import { BiEditAlt, BiUserCircle } from 'react-icons/bi';
@@ -209,12 +210,12 @@ export default function AllUsers({ loading, error, users }) {
                                 <MenuItem onClick={() => handleSubmit(user.id)}>
                                   {user.activated === true ? (
                                     <Flex align='center' py='12px' gap='12px'>
-                                      <CgToggleOff size={20} />
+                                      <LiaToggleOnSolid size={20} />
                                       <Text>Deactivate</Text>
                                     </Flex>
                                   ) : (
                                     <Flex align='center' py='12px' gap='12px'>
-                                      <CgToggleOn size={20} />
+                                        <LiaToggleOffSolid size={20} />
                                       <Text>Activate</Text>
                                     </Flex>
                                   )}

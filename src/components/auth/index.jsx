@@ -58,8 +58,8 @@ export function LoginComp() {
                     setIsLoading(false)
                 }
             })
-            .catch((err) => {
-                const errorMessage = err.data?.status === 'false' && err.data?.message || 'Email & Password does not match.';
+            .catch((res) => {
+                const errorMessage = res.data?.message || 'Email & Password does not match.';
                 toast({
                     title: errorMessage,
                     status: "error",

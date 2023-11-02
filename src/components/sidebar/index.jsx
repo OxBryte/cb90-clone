@@ -6,6 +6,8 @@ import { RxDashboard } from 'react-icons/rx'
 import { IoHeadsetOutline } from 'react-icons/io5'
 import { TbLogout2 } from 'react-icons/tb'
 import { Link, NavLink, useParams } from 'react-router-dom'
+import { selectUser } from '../../redux/userSlice'
+import { useSelector } from 'react-redux'
 
 export const SidebarData = [
     {
@@ -69,6 +71,12 @@ export const SidebarData2 = [
 
 export default function Sidebar() {
 
+    const user = useSelector(selectUser);
+
+    const userRole = user?.user?.role_id
+    console.log(userRole);
+
+
     const { id } = useParams()
 
     return (
@@ -96,6 +104,9 @@ export default function Sidebar() {
             </VStack>
             <UnorderedList m='0' listStyleType='none' spacing='10px' justifyContent='end'>
                 {SidebarData2.map((item, idx) => {
+                    if (item.title === 'Back Office' && userRole === '1') {
+                        return null;  // returning null will not render anything
+                    }
                     return (
                         <NavLink to={item.link} key={idx}>
                             <ListItem p='12px' roundedTopLeft='6px' roundedBottomLeft='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
