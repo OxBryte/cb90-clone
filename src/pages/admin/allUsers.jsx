@@ -112,12 +112,12 @@ export default function AllUsers({ loading, error, users }) {
   return (
     <>
       <Box bg='white' p='16px' rounded='16px' w='full'>
-        <HStack align='center' justify='space-between' w='full' mb='20px'>
+        <Flex flexWrap='wrap' gap='8px' align='center' justify='space-between' w='full' mb='20px'>
           <Text px='12px' py='8px' bg='brand.300' fontWeight={400} rounded='lg'>Existing users</Text>
           <Flex>
             <Input type='search' value={inputText} onChange={inputHandler} placeholder='Search users' size='sm' w='260px' minW='full' />
           </Flex>
-        </HStack>
+        </Flex>
         <Box>
           {inputText.length > 0 && filteredData.length >= 0 && (
             <Text>Search: Found {filteredData.length} </Text>

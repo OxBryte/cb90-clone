@@ -79,7 +79,7 @@ export default function DashboardNavbar() {
                 <UnorderedList m='0' listStyleType='none' spacing='10px' w='full'>
                   {SidebarData.map((item, i) => {
                     return (
-                      <NavLink to={item.link} key={i}>
+                      <NavLink to={item.link} key={i} onClick={onClose} >
                         <ListItem my='10px' p='12px' rounded='6px' w='full' _hover={{ bg: 'brand.900', color: 'brand.100' }} bg={id === item.id && 'brand.900'} color={id === item.id ? 'brand.100' : ''}>
                           <HStack>
                             {item.icon}
