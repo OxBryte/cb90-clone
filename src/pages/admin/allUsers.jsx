@@ -1,4 +1,4 @@
-import { Table, Thead, Tr, Th, Tbody, Td, Box, HStack, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader, Badge } from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Td, Box, Text, Flex, Input, TableContainer, useToast, MenuButton, MenuList, MenuItem, Button, Menu, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader, Badge } from '@chakra-ui/react';
 import moment from 'moment';
 import { BeatLoader } from 'react-spinners';
 import { CgMore, } from 'react-icons/cg'
@@ -13,7 +13,7 @@ import { selectToken } from '../../redux/userSlice';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-export default function AllUsers({ loading, error, users }) {
+export default function AllUsers({ loading, error, users, updateUserStatusInState }) {
 
   const [userInfo, setUserInfo] = useState(false)
   const [editUser, setEditUser] = useState(false)
@@ -21,6 +21,8 @@ export default function AllUsers({ loading, error, users }) {
   const toast = useToast();
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
   const token = useSelector(selectToken);
+
+  console.log(users)
 
   // Copy to clipboard function
   function copyToClipboard(text) {
@@ -77,10 +79,60 @@ export default function AllUsers({ loading, error, users }) {
 
       // setLoading(false)
       if (response.data?.status) {
+        updateUserStatusInState(ID, true);
         const successMessage = response.data?.message;
         toast({
           title: successMessage,
           description: 'Congratulations! You have successfully activated the user account.',
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        console.log(payload);
+
+      } else {
+        const errorMessage = response?.message || 'User not found';
+        toast({
+          title: errorMessage,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+
+    } catch (error) {
+      console.error('User not found');
+      toast({
+        title: 'User not found',
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
+  // Deactivate
+  const handleDeactivate = async (ID) => {
+    // setLoading(true)
+    const payload = {
+      id: ID
+    };
+
+    try {
+      const response = await axios.post(`${VITE_BASE_URL}/admin/deactivate`, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      // setLoading(false)
+      if (response.data?.status) {
+        updateUserStatusInState(ID, true);
+        const successMessage = response.data?.message;
+        toast({
+          title: successMessage,
+          description: 'Congratulations! You have successfully deactivated the user account.',
           status: "success",
           duration: 3000,
           isClosable: true,
@@ -188,7 +240,7 @@ export default function AllUsers({ loading, error, users }) {
                             </Flex>
                           </Td>
                           <Td>{moment(user.created_at).format('LL')}</Td>
-                          <Td>{user.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>} {user.role_id === '2' && <Badge colorScheme='blue'>Admin</Badge> }</Td>
+                          <Td>{user.activated === true ? <Badge colorScheme='green'>Active</Badge> : <Badge colorScheme='red'>Inactive</Badge>} {user.role_id === '2' && <Badge colorScheme='blue'>Admin</Badge>}</Td>
                           <Td>
                             <Menu>
                               <MenuButton as={Button} bg='none'>
@@ -207,19 +259,21 @@ export default function AllUsers({ loading, error, users }) {
                                     <Text>Edit</Text>
                                   </Flex>
                                 </MenuItem>
-                                <MenuItem onClick={() => { user.activated === true ? '' : handleSubmit(user.id) }}>
-                                  {user.activated === true ? (
+                                {user.activated === true ? (
+                                  <MenuItem onClick={() => { user.activated === false ? '' : handleDeactivate(user.id) }}>
                                     <Flex align='center' py='12px' gap='12px'>
                                       <LiaToggleOnSolid size={20} />
                                       <Text>Deactivate</Text>
                                     </Flex>
-                                  ) : (
+                                  </MenuItem>
+                                ) : (
+                                  <MenuItem onClick={() => { user.activated === true ? '' : handleSubmit(user.id) }}>
                                     <Flex align='center' py='12px' gap='12px'>
-                                        <LiaToggleOffSolid size={20} />
+                                      <LiaToggleOffSolid size={20} />
                                       <Text>Activate</Text>
                                     </Flex>
-                                  )}
-                                </MenuItem>
+                                  </MenuItem>
+                                )}
                                 <MenuItem>
                                   <Flex align='center' py='12px' gap='12px'>
                                     <GoTrash size={20} />

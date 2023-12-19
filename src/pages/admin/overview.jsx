@@ -41,9 +41,9 @@ export default function AdminOverview() {
         }
         fetchUser();
 
-        const intervalId = setInterval(fetchUser, 10000);
+        // const intervalId = setInterval(fetchUser, 10000);
 
-        return () => clearInterval(intervalId);
+        // return () => clearInterval(intervalId);
     }, [token, VITE_BASE_URL]);
 
     const usersLast24Hours = users.filter(user => moment().diff(moment(user.created_at), 'hours') < 24).length;
@@ -53,6 +53,15 @@ export default function AdminOverview() {
     const inactiveUsersCount = users.filter(user => user.activated === false).length;
     const adminUsersCount = users.filter(user => user.role_id === '2').length;
 
+    // Function to update user status in the state
+    const updateUserStatusInState = (userID, newStatus) => {
+        setUsers(users.map(user => {
+            if (user.id === userID) {
+                return { ...user, activated: newStatus };
+            }
+            return user;
+        }));
+    };
 
     return (
         <>
@@ -129,7 +138,7 @@ export default function AdminOverview() {
                 </Flex>
             </VStack>
             <VStack my='24px' w='full'>
-                <AllUsers loading={loading} users={users} error={error} />
+                <AllUsers loading={loading} users={users} error={error} updateUserStatusInState={updateUserStatusInState} />
             </VStack>
         </>
     )
