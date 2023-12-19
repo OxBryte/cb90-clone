@@ -22,8 +22,6 @@ export default function AllUsers({ loading, error, users, updateUserStatusInStat
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
   const token = useSelector(selectToken);
 
-  console.log(users)
-
   // Copy to clipboard function
   function copyToClipboard(text) {
     const textarea = document.createElement('textarea');
@@ -128,7 +126,7 @@ export default function AllUsers({ loading, error, users, updateUserStatusInStat
 
       // setLoading(false)
       if (response.data?.status) {
-        updateUserStatusInState(ID, true);
+        updateUserStatusInState(ID, false);
         const successMessage = response.data?.message;
         toast({
           title: successMessage,
